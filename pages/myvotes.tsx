@@ -11,7 +11,7 @@ export default function Admin() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <h1>This is My Votes Page</h1>
+        <h1>This Voting Page</h1>
         <Link href="/feedback"><button>Final Submit</button></Link><br></br>
 
       </div>
