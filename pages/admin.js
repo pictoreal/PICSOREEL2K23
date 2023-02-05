@@ -1,7 +1,29 @@
 import Head from 'next/head'
+import { useState } from 'react'
 
 
-function Admin({data}) {
+function Admin() {
+  const [user, setUser] = useState('')
+  const [users, setUsers] = useState([])
+
+  const getusers = async () => {
+    const s = process.env.BASE_FETCH_URL
+    const res = await fetch('http://localhost:3000/api/getuserlist')
+    const data = await res.json()
+    setUsers(data)
+  }
+  
+  const adduser = async () => {
+    const s = process.env.BASE_FETCH_URL
+    const res = await fetch('http://localhost:3000/api/insertuser', {
+      method: 'POST',
+      body: JSON.stringify({ user }),
+      headers: {
+        'Content-Type': 'application/JSON'
+      }
+    })
+    const data = await res.json()
+  }
   return (
     <>
       <Head>
@@ -13,23 +35,24 @@ function Admin({data}) {
       <div>
         <h1>This is Adminpage</h1>
       </div>
+      <h1>Add User</h1>
+      <h2>Please Input User Details</h2>
+      <input type='text' value={user} onChange={(e) => setUser(e.target.value)}></input>
+      <button onClick={adduser}>Add User</button>
       <h2>User List</h2>
-      <div>
-        <ul>
-          {data.map((post) => (
-            <li key={post._id}>{post.name}</li>
-            ))}
-        </ul>
-      </div>
+      <button onClick={getusers}>Get User List</button>
+      {
+        users.map((user) => {
+          return (
+            <div key={user._id}>
+              {user.name} {user.class} 
+            </div>
+          )
+        })
+      }
     </>
   )
 }
 
-export async function getServerSideProps() {
-  const s = process.env.BASE_FETCH_URL
-  const res = await fetch(s + '/api/getuserlist')
-  const data = await res.json()
-  return { props: { data } }
-}
 
 export default Admin
