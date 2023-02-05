@@ -12,7 +12,7 @@ function Admin() {
     const data = await res.json()
     setUsers(data)
   }
-  
+
   const adduser = async () => {
     const s = process.env.BASE_FETCH_URL
     const res = await fetch('http://localhost:3000/api/insertuser', {
@@ -23,7 +23,18 @@ function Admin() {
       }
     })
     const data = await res.json()
+    getusers()
   }
+
+  const deleteuser = async name => {
+    const s = process.env.BASE_FETCH_URL
+    const res = await fetch(`http://localhost:3000/api/deleteuser/${name}`, {
+      method: 'DELETE',
+    })
+    const data = await res.json()
+    getusers()
+  }
+
   return (
     <>
       <Head>
@@ -35,24 +46,28 @@ function Admin() {
       <div>
         <h1>This is Adminpage</h1>
       </div>
-      <h1>Add User</h1>
-      <h2>Please Input User Details</h2>
-      <input type='text' value={user} onChange={(e) => setUser(e.target.value)}></input>
-      <button onClick={adduser}>Add User</button>
-      <h2>User List</h2>
-      <button onClick={getusers}>Get User List</button>
-      {
-        users.map((user) => {
-          return (
-            <div key={user._id}>
-              {user.name} {user.class} 
-            </div>
-          )
-        })
-      }
+      <div>
+        <h1>Add User</h1>
+        <h2>Please Input User Details</h2>
+        <input type='text' value={user} onChange={(e) => setUser(e.target.value)}></input>
+        <button onClick={adduser}>Add User</button>
+        <h2>User List</h2>
+        <button onClick={getusers}>Get User List</button>
+        {
+          users.map((user) => {
+            return (
+              <div key={user._id}>
+                {user.name}
+                <button onClick={() => deleteuser(user.name)}>
+                  Delete User
+                </button>
+              </div>
+            )
+          })
+        }
+      </div>
     </>
   )
 }
-
 
 export default Admin
