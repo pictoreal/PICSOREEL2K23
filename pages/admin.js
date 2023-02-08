@@ -57,7 +57,7 @@ function Admin() {
           users.map((user) => {
             return (
               <div key={user._id}>
-                {user.name}
+                {user.name} | {user.if_submitted ? (<h6>Yes</h6>):(<h6>No</h6>)}
                 <button onClick={() => deleteuser(user.name)}>
                   Delete User
                 </button>

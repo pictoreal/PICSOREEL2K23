@@ -13,7 +13,24 @@ export default function Admin() {
       <div>
         <h1>This is My Votes Page</h1>
         <Link href="/feedback"><button>Final Submit</button></Link><br></br>
+        <div>
+          <div>
+            <p>Painting/Sketches</p>
 
+          </div>
+          <div>
+            <p>Photography</p>
+
+          </div>
+          <div>
+            <p>Digital Art</p>
+
+          </div>
+          <div>
+            <p>Theme</p>
+            
+          </div>
+        </div>
       </div>
     </>
   )
