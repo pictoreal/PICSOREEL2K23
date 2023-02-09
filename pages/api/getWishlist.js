@@ -15,3 +15,7 @@ export default async function handler(req, res) {
     }
     res.json(tp);
 }
+
+
+//aggregate pipeline for older schema
+//db.Votes.aggregate([{$lookup:{from:"Images",let:{image:"$image_id"},pipeline:[{$match:{$expr:{$and:[{$eq:["$image_id", "$$image"]},{$eq:["$category","painting"]}]}}}],as:"votedImages"}}, {$unwind:"$votedImages"}])
