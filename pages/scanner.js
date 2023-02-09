@@ -6,19 +6,24 @@ import { QrReader } from "react-qr-reader";
 export default function Scanner() {
   const [data, setData] = useState("No result");
   const [isloggedin, setIsLoggedIn] = useState(false)
-  useEffect(() => {
-    checkifuser()
-  }, []);
-
+  
   const checkifuser = async () => {
     const loggedInUser = localStorage.getItem("user");
     const resh = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
     const data = await resh.json()
-    if (data !== null) {
+    if (data.name !== "notuser") {
       setIsLoggedIn(true)
     }
-    console.log(isloggedin)
   }
+  useEffect(() => {
+    checkifuser()
+    }, []);
+    
+
+    const logout = async name => {
+      const loggedInUser = localStorage.removeItem('user');
+   
+    }
 
   return (
     <>
@@ -32,10 +37,12 @@ export default function Scanner() {
         isloggedin ?
           (
             <div style={{ width: "40%", height: "40%", margin: "auto" }}>
+              <Link href = '/'><button onClick={logout}>Logout</button></Link>
               <QrReader
                 onResult={(result, error) => {
                   if (!!result) {
                     setData(result?.text);
+                    // {console.log("Hello")}
                   }
 
                   if (!!error) {
@@ -51,6 +58,7 @@ export default function Scanner() {
               <div style={{ margin: "auto" }}>
                 <p>{data}</p>
                 <Link href={`/showimage/?id=${data}`}><button>Next</button></Link>
+                
               </div>
             </div>
           )
