@@ -1,36 +1,32 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Wishlist() {
 
   //displaying all the images with category painting from atlas
-  // const [painting, setPainting] = useState([])
-  // const [photography, setPhotography] = useState([])
-  // const [digitalart, setDigitalart] = useState([])
-  // const [theme, setTheme] = useState([])
+  const [paintings, setPainting] = useState([])
+  const [photographys, setPhotography] = useState([])
+  const [digitalarts, setDigitalart] = useState([])
+  const [themes, setTheme] = useState([])
   const [isloggedin, setIsLoggedIn] = useState(false)
 
-  const checkifuser = async () => {
+  const getcat = async cate => {
     const loggedInUser = localStorage.getItem("user");
-    //painting images
-    const resh = await fetch(`http://localhost:3000/api/getWishlist/${loggedInUser, "painting"}`)
-    const data = await resh.json()
-    if (data.name !== 'nouser') {
-      setIsLoggedIn(true)
-    }
-    console.log(isloggedin)
+    const res = await fetch('http://localhost:3000/api/getWishlist', {
+          method: 'POST',
+          body: JSON.stringify({  category : cate, username : loggedInUser}),
+          headers: {
+            'Content-Type': 'application/JSON'
+          }
+    }).resolve()
+
+    const data = res.json()
+    console.log(data)
   }
 
-
-
-  // const aggCursor = db.collection("Votes").aggregate(pipeline).toArray()
-  // for await (const doc of aggCursor) {
-  //   console.log(doc);
-  // }
-
-  const getPainting = async () => {
-
-  }
+  getcat("painting")
+  
   return (
     <>
       <Head>
@@ -44,8 +40,21 @@ export default function Wishlist() {
         <Link href="/feedback"><button>Final Submit</button></Link><br></br>
         <div>
           <div>
+            <button onClick={() => getcat("painting")}> ghe</button>
             <p>Painting/Sketches</p>
-
+            {/* {console.log(paintings)} */}
+            {
+              paintings.map((painting) => {
+                return (
+                  <>
+                    <div key={painting.image_id}>
+                      {painting.voter_id}
+                    </div>
+                    <button>Delete</button>
+                  </>
+                )
+              })
+            }
           </div>
           <div>
             <p>Photography</p>

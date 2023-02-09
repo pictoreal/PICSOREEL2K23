@@ -14,18 +14,17 @@ export default function Scanner() {
         setImages(data)
     }
 
-    const voteit = async imgid => {
-        try {
-            const userid = localStorage.getItem('user')
-            const res = await fetch(`http://localhost:3000/api/addvote/${imgid},${userid}`)
-            const data = await res.json()
-
-        }
-        catch (e) {
-            alert("Already Voted")
-        }
-
-    }
+    const voteit = async () => {
+        var user = localStorage.getItem('user')
+        const s = process.env.BASE_FETCH_URL
+        const res = await fetch('http://localhost:3000/api/addvote', {
+          method: 'POST',
+          body: JSON.stringify({ image_id : images[0].image_id, category : images[0].category, voter_id : user}),
+          headers: {
+            'Content-Type': 'application/JSON'
+          }
+        })
+      }
     var router = useRouter();
     // console.log(id)
     // getimage(id)
@@ -58,11 +57,6 @@ export default function Scanner() {
                         )
                     })
                 }
-
-
-
-
-
             </div>
         </>
 
