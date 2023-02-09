@@ -4,19 +4,15 @@ import { useState , useEffect} from 'react'
 
 export default function Wishlist() {
   const [isloggedin, setIsLoggedIn] = useState(false)
-  var loggedInUser;
   const checkifuser = async () => {
-    loggedInUser = localStorage.getItem("user");
+    const loggedInUser = localStorage.getItem("user");
     const resh = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
     const data = await resh.json()
     if (data.name !== "notuser") {
       setIsLoggedIn(true)
     }
   }
-  useEffect(() => {
-    checkifuser()
-  }, []);
-    
+  
   const logout = async name => {
     localStorage.removeItem('user');
   }
@@ -25,21 +21,32 @@ export default function Wishlist() {
   const [photographys, setPhotography] = useState([])
   const [digitalarts, setDigitalart] = useState([])
   const [themes, setTheme] = useState([])
-
+  
   const getcat = async cate => {
     // console.log(loggedInUser)
     const loggedInUser = localStorage.getItem('user')
     const res = await fetch('http://localhost:3000/api/getWishlist', {
-          method: 'POST',
-          body: JSON.stringify({  category : cate, username : loggedInUser}),
-          headers: {
-            'Content-Type': 'application/JSON'
-          }
+      method: 'POST',
+      body: JSON.stringify({  category : cate, username : loggedInUser}),
+      headers: {
+        'Content-Type': 'application/JSON'
+      }
     })
     const data = await res.json()
     setPainting(data)
     console.log(data)
   }
+  
+  const loadallimages = () => {
+    getcat("painting")
+    getcat("photo")
+    getcat("theme")
+    getcat("digital")
+  }
+  useEffect(() => {
+    checkifuser(),
+    loadallimages()
+  }, []);
   
   return (
     <>
@@ -54,9 +61,8 @@ export default function Wishlist() {
         <Link href="/feedback"><button>Final Submit</button></Link><br></br>
         <div>
           <div>
-            <button onClick={() => getcat("painting")}> ghe</button>
+            {/* <button onClick={() => loadallimages()}>Show all entries</button> */}
             <p>Painting/Sketches</p>
-            {/* {console.log(paintings)} */}
             {
               paintings.map((painting) => {
                 return (
@@ -64,7 +70,7 @@ export default function Wishlist() {
                     <div key={painting.image_id}>
                       {painting.name} | {painting.category} | {painting.class}
                     </div>
-                    <img href={painting.url}></img>
+                    <img src={painting.url}></img>
                     <button>Delete</button>
                   </>
                 )
