@@ -10,5 +10,5 @@ export default async function handler(req, res) {
         if_submitted: false,
     }
     const allPosts = await db.collection("Users").insertOne(newuser);
-    res.status(201).json(newuser);
+    res.status(201).json(allPosts);
 }

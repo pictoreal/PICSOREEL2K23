@@ -5,5 +5,5 @@ export default async function handler(req, res) {
     const db = client.db("Voting");
     const name = req.query
     const allPosts = await db.collection("Images").find(name).toArray();
-    res.status(200).json(allPosts[0]);
+    res.status(200).json(allPosts);
 }

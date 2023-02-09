@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
+import Link from 'next/link';
 
 
 function Admin() {
@@ -47,6 +48,11 @@ function Admin() {
     getusers()
   }
 
+  const logout = async name => {
+    const loggedInUser = localStorage.removeItem('user');
+ 
+  }
+
   return (
     <>
       <Head>
@@ -62,6 +68,8 @@ function Admin() {
         <>
           <div>
             <h1>Add User</h1>
+            
+            <Link href = "/adminlogin"><button onClick={logout}>Logout</button></Link>
             <h2>Please Input User Details</h2>
             <input type='text' value={user} onChange={(e) => setUser(e.target.value)}></input>
             <button onClick={adduser}>Add User</button>

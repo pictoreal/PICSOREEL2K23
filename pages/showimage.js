@@ -1,6 +1,7 @@
 import Head from "next/head"
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 
 export default function Scanner() {
@@ -12,16 +13,24 @@ export default function Scanner() {
         // console.log(data)
         setImages(data)
     }
-    var router = useRouter();
-    var id = router.query["id"];
-    
-    console.log(id)
-    if (id === "No number" || (id.slice(0, 1) !== "p" && id.slice(0, 1) !== "s")) {
 
-    }
-    else {
-        getimage(id);
-    }
+    const voteit = async () => {
+        var user = localStorage.getItem('user')
+        const s = process.env.BASE_FETCH_URL
+        const res = await fetch('http://localhost:3000/api/addvote', {
+          method: 'POST',
+          body: JSON.stringify({ image_id : images[0].image_id, category : images[0].category, voter_id : user}),
+          headers: {
+            'Content-Type': 'application/JSON'
+          }
+        })
+      }
+    var router = useRouter();
+    // console.log(id)
+    // getimage(id)
+    var id = "no"
+    id = router.query["id"];
+    getimage(id)
     return (
         <>
             <Head>
@@ -32,14 +41,22 @@ export default function Scanner() {
             </Head>
             <div>
                 <h1>This is image display page</h1>
-                {/* <button onClick={() => getimage(id)}>Load Image</button> */}
+                {
+                    images.map((image) => {
+                        return (
+                            <>
+                                <div key={image.image_id}>
+                                    {image.name} | {image.class} |
+                                    <img src={image.url}></img>
+                                </div>
 
-                <div key={images.image_id}>
-                    {images.name} | {images.class} | {images.vote}
-                </div>
-                <img src={images.url}></img>
 
-
+                                <button onClick={() => voteit(image.image_id)}>Add to wishlist</button>
+                                <Link href='/scanner'><button>No</button></Link>
+                            </>
+                        )
+                    })
+                }
             </div>
         </>
 

@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     const allPosts = await db.collection("Users").findOne(name);
     if(allPosts === null)
     {
-        res.status(200).json({'is_admin':false})
+        res.status(200).json({'is_admin':false, 'name': "notuser"})
     }
     else
     {
