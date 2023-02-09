@@ -1,31 +1,45 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 
 export default function Wishlist() {
-
+  const [isloggedin, setIsLoggedIn] = useState(false)
+  var loggedInUser;
+  const checkifuser = async () => {
+    loggedInUser = localStorage.getItem("user");
+    const resh = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
+    const data = await resh.json()
+    if (data.name !== "notuser") {
+      setIsLoggedIn(true)
+    }
+  }
+  useEffect(() => {
+    checkifuser()
+  }, []);
+    
+  const logout = async name => {
+    localStorage.removeItem('user');
+  }
   //displaying all the images with category painting from atlas
   const [paintings, setPainting] = useState([])
   const [photographys, setPhotography] = useState([])
   const [digitalarts, setDigitalart] = useState([])
   const [themes, setTheme] = useState([])
-  const [isloggedin, setIsLoggedIn] = useState(false)
 
   const getcat = async cate => {
-    const loggedInUser = localStorage.getItem("user");
+    // console.log(loggedInUser)
+    const loggedInUser = localStorage.getItem('user')
     const res = await fetch('http://localhost:3000/api/getWishlist', {
           method: 'POST',
           body: JSON.stringify({  category : cate, username : loggedInUser}),
           headers: {
             'Content-Type': 'application/JSON'
           }
-    }).resolve()
-
-    const data = res.json()
+    })
+    const data = await res.json()
+    setPainting(data)
     console.log(data)
   }
-
-  getcat("painting")
   
   return (
     <>
@@ -48,8 +62,9 @@ export default function Wishlist() {
                 return (
                   <>
                     <div key={painting.image_id}>
-                      {painting.voter_id}
+                      {painting.name} | {painting.category} | {painting.class}
                     </div>
+                    <img href={painting.url}></img>
                     <button>Delete</button>
                   </>
                 )

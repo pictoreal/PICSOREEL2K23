@@ -17,13 +17,12 @@ export default function Scanner() {
   }
   useEffect(() => {
     checkifuser()
-    }, []);
+  }, []);
     
 
-    const logout = async name => {
-      const loggedInUser = localStorage.removeItem('user');
-   
-    }
+  const logout = async name => {
+    const loggedInUser = localStorage.removeItem('user');
+  }
 
   return (
     <>
