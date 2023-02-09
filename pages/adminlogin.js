@@ -9,12 +9,10 @@ function Admin() {
 
     const adminlogin = async adminid => {
         const s = process.env.BASE_FETCH_URL
-        const res = await fetch(`http://localhost:3000/api/checkadmin/${adminid}`, {
-            method: 'DELETE',
-        })
+        const res = await fetch(`http://localhost:3000/api/checkadmin/${adminid}`)
         const data = await res.json()
         setUsers(data)
-        console.log(users.is_admin)
+        localStorage.setItem('user', data.name)
     }
 
     return (
@@ -33,11 +31,11 @@ function Admin() {
                 <input type='text' value={adminid} onChange={(e) => setAdminId(e.target.value)}></input>
                 <button onClick={() => adminlogin(adminid)}>Admin Login</button>
             </div>
-            {users.is_admin ?(
+            {users.is_admin ? (
                 <>
-                <Link href="/admin"><button>Procced</button></Link><br></br>
+                    <Link href="/admin"><button>Procced</button></Link><br></br>
                 </>
-            ):(
+            ) : (
                 <div>
                     You are not admin
                 </div>

@@ -7,6 +7,7 @@ export default async function handler(req, res) {
     const newuser = {
         name: user,
         is_admin: false,
+        if_submitted: false,
     }
     const allPosts = await db.collection("Users").insertOne(newuser);
     res.status(201).json(newuser);

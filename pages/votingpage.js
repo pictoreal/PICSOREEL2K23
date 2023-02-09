@@ -2,6 +2,21 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 export default function Admin() {
+  const [user, setUser] = useState('')
+  const [isloggedin, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    checkifuser()
+  }, []);
+
+  const checkifuser = async () => {
+    const loggedInUser = localStorage.getItem("user");
+    const resh = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
+    const data = await resh.json()
+    if (data) {
+      setIsLoggedIn(true)
+    }
+  }
   return (
     <>
       <Head>

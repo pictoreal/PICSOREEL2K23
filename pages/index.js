@@ -10,9 +10,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
+      <div style={{margin:"auto", width:"70%"}}>
         <h1>This is Homepage</h1>
-        <Link href="/adminlogin"><button>Admin</button></Link><br></br>
+        {/* <Link href="/adminlogin"><button>Admin</button></Link><br></br> */}
         <Link href="/login"><button>Voter Login</button></Link>
       </div>
     </>

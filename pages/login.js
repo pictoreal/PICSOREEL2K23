@@ -1,7 +1,17 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Admin() {
+  const [users, setUsers] = useState([])
+  const [userid, setUserId] = useState('')
+  const userlogin = async userid => {
+    const s = process.env.BASE_FETCH_URL
+    const res = await fetch(`http://localhost:3000/api/checkadmin/${userid}`)
+    const data = await res.json()
+    setUsers(data)
+    localStorage.setItem('user', data.name)
+  }
   return (
     <>
       <Head>
@@ -12,8 +22,22 @@ export default function Admin() {
       </Head>
       <div>
         <h1>This is Instruction Page</h1>
-        <Link href="/votingpage"><button>Next</button></Link><br></br>
+        <div>
+          <h3>Enter User ID (eg:c2k....)</h3>
+          <input type='text' value={userid} onChange={(e) => setUserId(e.target.value)}></input>
+          <Link href="/scanner"><button onClick={() => userlogin(userid)}>User Login</button></Link>
+        </div>
       </div>
+      {/* {users.name ? (
+        <>
+          <Link href="/scanner"><button>Procced to Scan</button></Link><br></br>
+        </>
+      ) : (
+        <div>
+          You are not Logged in
+        </div>
+      )} */}
+      {/* <Link href="/votingpage"><button>Next</button></Link><br></br> */}
     </>
   )
 }
