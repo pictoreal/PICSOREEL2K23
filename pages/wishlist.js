@@ -65,7 +65,6 @@ export default function Wishlist() {
       }
     })
     const data = await res.json()
-    console.log(votecount)
   }
 
   const loadallimages = async () => {
@@ -169,7 +168,7 @@ export default function Wishlist() {
             (
               <><Link href="/feedback"><button onClick={() => submitvotes()}>Final Submit</button></Link><br></br></>
             ) :
-            (<div><button onClick={() => alert("Please enter 2 votes for each category")}>Final Submit</button></div>)}
+            (<><button onClick={() => alert("Please enter 2 votes for each category")}>Final Submit</button></>)}
         </div>
       </div>
     </>
