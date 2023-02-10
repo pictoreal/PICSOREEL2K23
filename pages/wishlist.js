@@ -41,12 +41,31 @@ export default function Wishlist() {
     const loggedInUser = localStorage.getItem('user')
     const res = await fetch('http://localhost:3000/api/deletevote', {
       method: 'POST',
-      body: JSON.stringify({username: loggedInUser, image_id: imgid }),
+      body: JSON.stringify({ username: loggedInUser, image_id: imgid }),
       headers: {
         'Content-Type': 'application/JSON'
       }
     })
     loadallimages();
+  }
+
+  function getCount() {
+    var votecount = paintings.length + photographys.length + digitalarts.length + themes.length;
+    return votecount;
+  }
+
+
+  const submitvotes = async () => {
+    const loggedInUser = localStorage.getItem('user')
+    const res = await fetch('http://localhost:3000/api/submitvotes', {
+      method: 'POST',
+      body: JSON.stringify({username: loggedInUser}),
+      headers: {
+        'Content-Type': 'application/JSON'
+      }
+    })
+    const data = await res.json()
+    console.log(votecount)
   }
 
   const loadallimages = async () => {
@@ -64,7 +83,7 @@ export default function Wishlist() {
   //starting state of the page
   useEffect(() => {
     loadallimages(),
-    checkifuser()
+      checkifuser()
   }, []);
 
   return (
@@ -77,7 +96,6 @@ export default function Wishlist() {
       </Head>
       <div>
         <h1>This is My Wishlists Page</h1>
-        <Link href="/feedback"><button>Final Submit</button></Link><br></br>
         <Link href="/scanner"><button>Scan More</button></Link><br></br>
         <div>
           <div>
@@ -145,6 +163,13 @@ export default function Wishlist() {
               })
             }
           </div>
+        </div>
+        <div>
+          {getCount() === 8 ?
+            (
+              <><Link href="/feedback"><button onClick={() => submitvotes()}>Final Submit</button></Link><br></br></>
+            ) :
+            (<div><button onClick={() => alert("Please enter 2 votes for each category")}>Final Submit</button></div>)}
         </div>
       </div>
     </>

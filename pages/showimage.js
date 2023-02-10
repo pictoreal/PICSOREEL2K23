@@ -31,7 +31,7 @@ export default function Scanner() {
                 alert("2 votes already casted in given category")
             }
         } catch (e) {
-            alert("You have already choosed this")
+            alert("You have already voted for this!")
         }
     }
     var router = useRouter();
