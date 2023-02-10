@@ -8,12 +8,17 @@ export default function uploadimages() {
     const [clas, setClas] = useState('')
     const [url, setURL] = useState('')
     const [cat, setCat] = useState('')
-
+    const [images, setImages] = useState([])
+    const loadimags = async () => {
+        const res = await fetch('http://localhost:3000/api/getallimages')
+        const data = await res.json()
+        setImages(data)
+    }
     const submitentry = async () => {
         const s = process.env.BASE_FETCH_URL
         const res = await fetch('http://localhost:3000/api/submitentry', {
             method: 'POST',
-            body: JSON.stringify({ imageid : user, name : name, class : clas, url : url, category : cat }),
+            body: JSON.stringify({ imageid: user, name: name, class: clas, url: url, category: cat }),
             headers: {
                 'Content-Type': 'application/JSON'
             }
@@ -37,6 +42,18 @@ export default function uploadimages() {
                 Category : <input type='text' value={cat} onChange={(e) => setCat(e.target.value)}></input><br></br>
                 <button onClick={() => submitentry()}>Submit</button>
             </div>
+            <button onClick={() => loadimags()}>Load Images</button>
+            {
+                images.map((image) => {
+                    return (
+                        <>
+                            <div key={image.image_id}>
+                                {image.image_id} | {image.category} | {image.name} | {image.class}
+                            </div>
+                        </>
+                    )
+                })
+            }
         </>
     )
 }
