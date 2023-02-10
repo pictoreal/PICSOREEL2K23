@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
-export default function Admin() {
+export default function Admin({href}) {
+  const router = useRouter()
   const [users, setUsers] = useState([])
   const [userid, setUserId] = useState('')
   const userlogin = async userid => {
@@ -11,7 +13,14 @@ export default function Admin() {
     const data = await res.json()
     setUsers(data)
     localStorage.setItem('user', data.name)
+    console.log(data)
+    if (data.if_submitted === true){
+      router.push('/myvotes')
+    } else{
+      router.push('/scanner')
+    };
   }
+
   return (
     <>
       <Head>
@@ -21,23 +30,13 @@ export default function Admin() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <h1>This is Instruction Page</h1>
+        <h1>This is the instruction page.</h1>
         <div>
           <h3>Enter User ID (eg:c2k....)</h3>
           <input type='text' value={userid} onChange={(e) => setUserId(e.target.value)}></input>
-          <Link href="/scanner"><button onClick={() => userlogin(userid)}>User Login</button></Link>
+          <button onClick={() => userlogin(userid)}>User Login</button>
         </div>
       </div>
-      {/* {users.name ? (
-        <>
-          <Link href="/scanner"><button>Procced to Scan</button></Link><br></br>
-        </>
-      ) : (
-        <div>
-          You are not Logged in
-        </div>
-      )} */}
-      {/* <Link href="/votingpage"><button>Next</button></Link><br></br> */}
     </>
   )
 }
