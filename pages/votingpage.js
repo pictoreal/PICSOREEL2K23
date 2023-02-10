@@ -28,7 +28,7 @@ export default function Admin() {
       <div>
         <h1>This is Votingpage</h1>
         <Link href="/scanner"><button>Scan to vote</button></Link><br></br>
-        <Link href="/myvotes"><button>My votes</button></Link>
+        <Link href="/wishlist"><button>My votes</button></Link>
       </div>
     </>
   )

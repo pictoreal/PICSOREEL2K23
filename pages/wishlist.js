@@ -34,8 +34,19 @@ export default function Wishlist() {
       }
     })
     const data = await res.json()
-    console.log(data);
     return data;
+  }
+
+  const deletevote = async imgid => {
+    const loggedInUser = localStorage.getItem('user')
+    const res = await fetch('http://localhost:3000/api/deletevote', {
+      method: 'POST',
+      body: JSON.stringify({username: loggedInUser, image_id: imgid }),
+      headers: {
+        'Content-Type': 'application/JSON'
+      }
+    })
+    loadallimages();
   }
 
   const loadallimages = async () => {
@@ -52,8 +63,8 @@ export default function Wishlist() {
 
   //starting state of the page
   useEffect(() => {
-    checkifuser(),
-    loadallimages()
+    loadallimages(),
+    checkifuser()
   }, []);
 
   return (
@@ -67,6 +78,7 @@ export default function Wishlist() {
       <div>
         <h1>This is My Wishlists Page</h1>
         <Link href="/feedback"><button>Final Submit</button></Link><br></br>
+        <Link href="/scanner"><button>Scan More</button></Link><br></br>
         <div>
           <div>
             {/* <button onClick={() => loadallimages()}>Show all entries</button> */}
@@ -79,7 +91,7 @@ export default function Wishlist() {
                       {painting.name} | {painting.category} | {painting.class}
                     </div>
                     <img src={painting.url}></img>
-                    <button>Delete</button>
+                    <button onClick={() => deletevote(painting.image_id)}>Delete</button>
                   </>
                 )
               })
@@ -95,23 +107,8 @@ export default function Wishlist() {
                       {photograph.name} | {photograph.category} | {photograph.class}
                     </div>
                     <img src={photograph.url}></img>
-                    <button>Delete</button>
-
-                    {/*  Base logic for the delete button of each image
-                    
-                    (<button onclick={async () => {
-                      const loggedInUser = localStorage.getItem('user')
-                      const res = await fetch('http://localhost:3000/api/deletevote', {
-                        method: 'POST',
-                        body: JSON.stringify({ category: cate, username: loggedInUser, image_id: photograph.image_id }),
-                        headers: {
-                          'Content-Type': 'application/JSON'
-                        }
-                      })
-                    }}>Delete</button>) */}
+                    <button onClick={() => deletevote(photograph.image_id)}>Delete</button>
                   </>
-
-
                 )
               })
             }
@@ -126,7 +123,7 @@ export default function Wishlist() {
                       {dart.name} | {dart.category} | {dart.class}
                     </div>
                     <img src={dart.url}></img>
-                    <button>Delete</button>
+                    <button onClick={() => deletevote(dart.image_id)}>Delete</button>
                   </>
                 )
               })
@@ -142,7 +139,7 @@ export default function Wishlist() {
                       {theme.name} | {theme.category} | {theme.class}
                     </div>
                     <img src={theme.url}></img>
-                    <button>Delete</button>
+                    <button onClick={() => deletevote(theme.image_id)}>Delete</button>
                   </>
                 )
               })
