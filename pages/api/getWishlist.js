@@ -7,6 +7,7 @@ export default async function handler(req, res) {
     const cate = req.body.category
     const allPosts = await db.collection("Votes").find({voter_id : user, category : cate}).toArray();
     const tp = []
+    // console.log(allPosts)
     for(let i = 0; i< allPosts.length; i++)
     {
         const res = await fetch(`http://localhost:3000/api/getimage/${allPosts[i].image_id}`)
