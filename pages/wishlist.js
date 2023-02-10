@@ -53,7 +53,7 @@ export default function Wishlist() {
   //starting state of the page
   useEffect(() => {
     checkifuser(),
-      loadallimages()
+    loadallimages()
   }, []);
 
   return (
