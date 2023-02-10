@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState , useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Wishlist() {
   const [isloggedin, setIsLoggedIn] = useState(false)
@@ -12,42 +12,50 @@ export default function Wishlist() {
       setIsLoggedIn(true)
     }
   }
-  
+
   const logout = async name => {
     localStorage.removeItem('user');
   }
+
   //displaying all the images with category painting from atlas
   const [paintings, setPainting] = useState([])
   const [photographys, setPhotography] = useState([])
   const [digitalarts, setDigitalart] = useState([])
   const [themes, setTheme] = useState([])
-  
+
   const getcat = async cate => {
     // console.log(loggedInUser)
     const loggedInUser = localStorage.getItem('user')
     const res = await fetch('http://localhost:3000/api/getWishlist', {
       method: 'POST',
-      body: JSON.stringify({  category : cate, username : loggedInUser}),
+      body: JSON.stringify({ category: cate, username: loggedInUser }),
       headers: {
         'Content-Type': 'application/JSON'
       }
     })
     const data = await res.json()
-    setPainting(data)
-    console.log(data)
+    console.log(data);
+    return data;
   }
-  
-  const loadallimages = () => {
-    getcat("painting")
-    getcat("photo")
-    getcat("theme")
-    getcat("digital")
+
+  const loadallimages = async () => {
+    setPainting(await getcat("painting"));
+    setPhotography(await getcat("photo"));
+    setTheme(await getcat("theme"));
+    setDigitalart(await getcat("digital"));
+
+    // getcat("painting");
+    // getcat("photo");
+    // getcat("theme");
+    // getcat("digital");
   }
+
+  //starting state of the page
   useEffect(() => {
     checkifuser(),
     loadallimages()
   }, []);
-  
+
   return (
     <>
       <Head>
@@ -62,7 +70,7 @@ export default function Wishlist() {
         <div>
           <div>
             {/* <button onClick={() => loadallimages()}>Show all entries</button> */}
-            <p>Painting/Sketches</p>
+            <p>Painting/Sketches |||| No. of Votes Remaining: {2 - paintings.length} </p>
             {
               paintings.map((painting) => {
                 return (
@@ -78,16 +86,67 @@ export default function Wishlist() {
             }
           </div>
           <div>
-            <p>Photography</p>
+            <p>Photography |||| No. of Votes Remaining: {2 - photographys.length}</p>
+            {
+              photographys.map((photograph) => {
+                return (
+                  <>
+                    <div key={photograph.image_id}>
+                      {photograph.name} | {photograph.category} | {photograph.class}
+                    </div>
+                    <img src={photograph.url}></img>
+                    <button>Delete</button>
 
+                    {/*  Base logic for the delete button of each image
+                    
+                    (<button onclick={async () => {
+                      const loggedInUser = localStorage.getItem('user')
+                      const res = await fetch('http://localhost:3000/api/deletevote', {
+                        method: 'POST',
+                        body: JSON.stringify({ category: cate, username: loggedInUser, image_id: photograph.image_id }),
+                        headers: {
+                          'Content-Type': 'application/JSON'
+                        }
+                      })
+                    }}>Delete</button>) */}
+                  </>
+
+
+                )
+              })
+            }
           </div>
           <div>
-            <p>Digital Art</p>
-
+            <p>Digital Art |||| No. of Votes Remaining: {2 - digitalarts.length} </p>
+            {
+              digitalarts.map((dart) => {
+                return (
+                  <>
+                    <div key={dart.image_id}>
+                      {dart.name} | {dart.category} | {dart.class}
+                    </div>
+                    <img src={dart.url}></img>
+                    <button>Delete</button>
+                  </>
+                )
+              })
+            }
           </div>
           <div>
-            <p>Theme</p>
-
+            <p>Theme |||| No. of Votes Remaining: {2 - themes.length} </p>
+            {
+              themes.map((theme) => {
+                return (
+                  <>
+                    <div key={theme.image_id}>
+                      {theme.name} | {theme.category} | {theme.class}
+                    </div>
+                    <img src={theme.url}></img>
+                    <button>Delete</button>
+                  </>
+                )
+              })
+            }
           </div>
         </div>
       </div>
