@@ -44,7 +44,7 @@ export default function feedback() {
         <br></br>
         <div>
           <Link href="https://docs.google.com/forms/d/e/1FAIpQLSc5bZBUMK98bxt_P92EHSularg0bo6Y1eWS4jniSZfgVxpRmg/viewform?usp=sf_link"><button>Submit Feedback</button></Link>
-          <Link href="/myvotes"><button>Back to Wishlist</button></Link>
+          <Link href="/myvotes"><button>Back to Vote List</button></Link>
           <Link href='/login'><button onClick={() => logout()}>Logout</button></Link>
         </div>
       </div>

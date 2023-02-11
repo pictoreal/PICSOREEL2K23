@@ -32,6 +32,8 @@ export default function Scanner() {
     const image = await res.json()
     if (image.length > 0) {
       router.push(`/showimage/?id=${data}`)
+    } else{
+      setData(null);
     }
   }
 
@@ -58,7 +60,6 @@ export default function Scanner() {
                     setData(result?.text);
                     autoRedirect(result?.text);
                   }
-
                   if (!!error) {
                     console.info(error);
                   }
