@@ -132,6 +132,9 @@ export default function MyVotes() {
                     })
                   }
                 </div>
+                <div>
+                  <Link href="/feedback"><button>Submit Feedback</button></Link>
+                </div>
               </div>
             </div>
           )
