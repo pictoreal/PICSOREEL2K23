@@ -6,11 +6,20 @@ import Link from "next/link";
 
 export default function Scanner() {
     const [images, setImages] = useState([])
+    const [isloggedin, setIsLoggedIn] = useState(false)
+
+    const checkifuser = async () => {
+        const loggedInUser = localStorage.getItem("user");
+        const resh = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
+        const data = await resh.json()
+        if (data.name !== "notuser") {
+            setIsLoggedIn(true)
+        }
+    }
     const getimage = async locid => {
         const s = process.env.BASE_FETCH_URL
         const res = await fetch(`http://localhost:3000/api/getimage/${locid}`)
         const data = await res.json()
-        // console.log(data)
         setImages(data)
     }
 
@@ -26,8 +35,7 @@ export default function Scanner() {
                 }
             })
             const data = await res.json();
-            if(data.msg)
-            {
+            if (data.msg) {
                 alert("2 votes already casted in given category")
             }
         } catch (e) {
@@ -39,7 +47,11 @@ export default function Scanner() {
     // getimage(id)
     var id = "no"
     id = router.query["id"];
-    getimage(id)
+
+    useEffect(() => {
+        checkifuser(), getimage(id)
+    }, []);
+
     return (
         <>
             <Head>
@@ -48,25 +60,32 @@ export default function Scanner() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div>
-                <h1>This is image display page</h1>
-                {
-                    images.map((image) => {
-                        return (
-                            <>
-                                <div key={image.image_id}>
-                                    {image.name} | {image.class} |
-                                    <img src={image.url}></img>
-                                </div>
-
-
-                                <Link href = "/wishlist"><button onClick={async () => await voteit(image.image_id)}>Add to wishlist</button></Link>
-                                <Link href='/scanner'><button>No</button></Link>
-                            </>
-                        )
-                    })
-                }
-            </div>
+            {
+                isloggedin ?
+                    (
+                        <div>
+                            <h1>This is image display page</h1>
+                            {
+                                images.map((image) => {
+                                    return (
+                                        <>
+                                            <div key={image.image_id}>
+                                                {image.name} | {image.class} |
+                                                <img src={image.url}></img>
+                                            </div>
+                                            <Link href="/wishlist"><button onClick={async () => await voteit(image.image_id)}>Add to wishlist</button></Link>
+                                            <Link href='/scanner'><button>No</button></Link>
+                                        </>
+                                    )
+                                })
+                            }
+                        </div>
+                    )
+                    :
+                    (
+                        <h2>Not logged in</h2>
+                    )
+            }
         </>
 
     )

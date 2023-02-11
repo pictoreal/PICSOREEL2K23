@@ -15,6 +15,7 @@ export default function Scanner() {
       setIsLoggedIn(true)
     }
   }
+
   useEffect(() => {
     checkifuser()
   }, []);
@@ -41,7 +42,6 @@ export default function Scanner() {
                 onResult={(result, error) => {
                   if (!!result) {
                     setData(result?.text);
-                    // {console.log("Hello")}
                   }
 
                   if (!!error) {
@@ -57,7 +57,6 @@ export default function Scanner() {
               <div style={{ margin: "auto" }}>
                 <p>{data}</p>
                 <Link href={`/showimage/?id=${data}`}><button>Next</button></Link>
-                
               </div>
             </div>
           )

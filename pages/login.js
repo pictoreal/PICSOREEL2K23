@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
@@ -17,8 +16,8 @@ export default function Admin({href}) {
     if (data.if_submitted === true){
       router.push('/myvotes')
     } else{
-      router.push('/scanner')
-    };
+      router.push('/wishlist')
+    }
   }
 
   return (

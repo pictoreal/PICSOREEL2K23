@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 export default function Wishlist() {
   const [isloggedin, setIsLoggedIn] = useState(false)
+
   const checkifuser = async () => {
     const loggedInUser = localStorage.getItem("user");
     const resh = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
@@ -24,7 +25,6 @@ export default function Wishlist() {
   const [themes, setTheme] = useState([])
 
   const getcat = async cate => {
-    // console.log(loggedInUser)
     const loggedInUser = localStorage.getItem('user')
     const res = await fetch('http://localhost:3000/api/getWishlist', {
       method: 'POST',
@@ -59,7 +59,7 @@ export default function Wishlist() {
     const loggedInUser = localStorage.getItem('user')
     const res = await fetch('http://localhost:3000/api/submitvotes', {
       method: 'POST',
-      body: JSON.stringify({username: loggedInUser}),
+      body: JSON.stringify({ username: loggedInUser }),
       headers: {
         'Content-Type': 'application/JSON'
       }
@@ -72,17 +72,11 @@ export default function Wishlist() {
     setPhotography(await getcat("photo"));
     setTheme(await getcat("theme"));
     setDigitalart(await getcat("digital"));
-
-    // getcat("painting");
-    // getcat("photo");
-    // getcat("theme");
-    // getcat("digital");
   }
 
   //starting state of the page
   useEffect(() => {
-    loadallimages(),
-      checkifuser()
+    loadallimages(), checkifuser()
   }, []);
 
   return (
@@ -93,84 +87,103 @@ export default function Wishlist() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <h1>This is My Wishlists Page</h1>
-        <Link href="/scanner"><button>Scan More</button></Link><br></br>
-        <div>
-          <div>
-            {/* <button onClick={() => loadallimages()}>Show all entries</button> */}
-            <p>Painting/Sketches |||| No. of Votes Remaining: {2 - paintings.length} </p>
-            {
-              paintings.map((painting) => {
-                return (
-                  <>
-                    <div key={painting.image_id}>
-                      {painting.name} | {painting.category} | {painting.class}
-                    </div>
-                    <img src={painting.url}></img>
-                    <button onClick={() => deletevote(painting.image_id)}>Delete</button>
-                  </>
-                )
-              })
-            }
-          </div>
-          <div>
-            <p>Photography |||| No. of Votes Remaining: {2 - photographys.length}</p>
-            {
-              photographys.map((photograph) => {
-                return (
-                  <>
-                    <div key={photograph.image_id}>
-                      {photograph.name} | {photograph.category} | {photograph.class}
-                    </div>
-                    <img src={photograph.url}></img>
-                    <button onClick={() => deletevote(photograph.image_id)}>Delete</button>
-                  </>
-                )
-              })
-            }
-          </div>
-          <div>
-            <p>Digital Art |||| No. of Votes Remaining: {2 - digitalarts.length} </p>
-            {
-              digitalarts.map((dart) => {
-                return (
-                  <>
-                    <div key={dart.image_id}>
-                      {dart.name} | {dart.category} | {dart.class}
-                    </div>
-                    <img src={dart.url}></img>
-                    <button onClick={() => deletevote(dart.image_id)}>Delete</button>
-                  </>
-                )
-              })
-            }
-          </div>
-          <div>
-            <p>Theme |||| No. of Votes Remaining: {2 - themes.length} </p>
-            {
-              themes.map((theme) => {
-                return (
-                  <>
-                    <div key={theme.image_id}>
-                      {theme.name} | {theme.category} | {theme.class}
-                    </div>
-                    <img src={theme.url}></img>
-                    <button onClick={() => deletevote(theme.image_id)}>Delete</button>
-                  </>
-                )
-              })
-            }
-          </div>
-        </div>
-        <div>
-          {getCount() === 8 ?
-            (
-              <><Link href="/feedback"><button onClick={() => submitvotes()}>Final Submit</button></Link><br></br></>
-            ) :
-            (<><button onClick={() => alert("Please enter 2 votes for each category")}>Final Submit</button></>)}
-        </div>
-      </div>
+      {
+        isloggedin ?
+          (
+            <div>
+              <h1>This is My Wishlists Page</h1>
+              <Link href="/scanner"><button>Scan More</button></Link>
+              <Link href="/login"><button onClick={() => logout()}>Logout</button></Link><br></br>
+              <div>
+                <div>
+                  <p>Painting/Sketches |||| No. of Votes Remaining: {2 - paintings.length} </p>
+                  {
+                    paintings.map((painting) => {
+                      return (
+                        <>
+                          <div key={painting.image_id}>
+                            {painting.name} | {painting.category} | {painting.class}
+                          </div>
+                          <img src={painting.url}></img>
+                          <button onClick={() => deletevote(painting.image_id)}>Delete</button>
+                        </>
+                      )
+                    })
+                  }
+                </div>
+                <div>
+                  <p>Photography |||| No. of Votes Remaining: {2 - photographys.length}</p>
+                  {
+                    photographys.map((photograph) => {
+                      return (
+                        <>
+                          <div key={photograph.image_id}>
+                            {photograph.name} | {photograph.category} | {photograph.class}
+                          </div>
+                          <img src={photograph.url}></img>
+                          <button onClick={() => deletevote(photograph.image_id)}>Delete</button>
+                        </>
+                      )
+                    })
+                  }
+                </div>
+                <div>
+                  <p>Digital Art |||| No. of Votes Remaining: {2 - digitalarts.length} </p>
+                  {
+                    digitalarts.map((dart) => {
+                      return (
+                        <>
+                          <div key={dart.image_id}>
+                            {dart.name} | {dart.category} | {dart.class}
+                          </div>
+                          <img src={dart.url}></img>
+                          <button onClick={() => deletevote(dart.image_id)}>Delete</button>
+                        </>
+                      )
+                    })
+                  }
+                </div>
+                <div>
+                  <p>Theme |||| No. of Votes Remaining: {2 - themes.length} </p>
+                  {
+                    themes.map((theme) => {
+                      return (
+                        <>
+                          <div key={theme.image_id}>
+                            {theme.name} | {theme.category} | {theme.class}
+                          </div>
+                          <img src={theme.url}></img>
+                          <button onClick={() => deletevote(theme.image_id)}>Delete</button>
+                        </>
+                      )
+                    })
+                  }
+                </div>
+              </div>
+              <div>
+                {getCount() === 8 ?
+                  (
+                    <>
+                      <Link href="/feedback"><button onClick={() => submitvotes()}>Final Submit</button></Link><br></br>
+                    </>
+                  ) :
+                  (
+                    <>
+                      <button onClick={() => alert("Please enter 2 votes for each category")}>Final Submit</button>
+                    </>
+                  )
+                }
+              </div>
+            </div>
+          )
+          :
+          (
+            <div>
+              <h2>Not logged in</h2>
+            </div>
+          )
+      }
+
     </>
   )
 }
