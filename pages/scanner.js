@@ -15,16 +15,25 @@ export default function Scanner() {
     const resh = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
     const data = await resh.json()
     if (data.name !== "notuser") {
-      setIsLoggedIn(true)
+      setIsLoggedIn(true);
+      setData(null);
     } else{
       router.push('/login')
     }
   }
 
   useEffect(() => {
-    checkifuser()
+    checkifuser();
   }, []);
     
+  const autoRedirect = async data => {
+    const s = process.env.BASE_FETCH_URL
+    const res = await fetch(`http://localhost:3000/api/getimage/${data}`)
+    const image = await res.json()
+    if (image.length > 0) {
+      router.push(`/showimage/?id=${data}`)
+    }
+  }
 
   const logout = async name => {
     const loggedInUser = localStorage.removeItem('user');
@@ -41,12 +50,13 @@ export default function Scanner() {
       {
         isloggedin ?
           (
-            <div style={{ width: "40%", height: "40%", margin: "auto" }}>
+            <div style={{ width: "40%", height: "40%", margin: "auto", background: "pink"}}>
               <Link href = '/'><button onClick={logout}>Logout</button></Link>
               <QrReader
                 onResult={(result, error) => {
                   if (!!result) {
                     setData(result?.text);
+                    autoRedirect(result?.text);
                   }
 
                   if (!!error) {
@@ -60,8 +70,8 @@ export default function Scanner() {
                 style={{ width: "20%", height: "20%" }}
               />
               <div style={{ margin: "auto" }}>
-                <p>{data}</p>
-                <Link href={`/showimage/?id=${data}`}><button>Next</button></Link>
+                {/* <p>{data}</p> */}
+                {/* <Link href={`/showimage/?id=${data}`}><button>Next</button></Link> */}
               </div>
             </div>
           )
