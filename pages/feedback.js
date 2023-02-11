@@ -1,11 +1,16 @@
+// import redirect from 'nextjs-redirect'
+// export default redirect('https://docs.google.com/forms/d/e/1FAIpQLSc5bZBUMK98bxt_P92EHSularg0bo6Y1eWS4jniSZfgVxpRmg/viewform?usp=sf_link')
+
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export default function feedback() {
   return (
     <>
       <Head>
-        <title>FEEDBACK</title>
+        <title>Feedback</title>
         <div>
         <p><h1><b>Thank you for voting!</b></h1></p>
             </div>
