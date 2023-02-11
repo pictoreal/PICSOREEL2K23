@@ -17,14 +17,23 @@ export default function Scanner() {
     const voteit = async () => {
         var user = localStorage.getItem('user')
         const s = process.env.BASE_FETCH_URL
-        const res = await fetch('http://localhost:3000/api/addvote', {
-          method: 'POST',
-          body: JSON.stringify({ image_id : images[0].image_id, category : images[0].category, voter_id : user}),
-          headers: {
-            'Content-Type': 'application/JSON'
-          }
-        })
-      }
+        try {
+            const res = await fetch('http://localhost:3000/api/addvote', {
+                method: 'POST',
+                body: JSON.stringify({ image_id: images[0].image_id, category: images[0].category, voter_id: user }),
+                headers: {
+                    'Content-Type': 'application/JSON'
+                }
+            })
+            const data = await res.json();
+            if(data.msg)
+            {
+                alert("2 votes already casted in given category")
+            }
+        } catch (e) {
+            alert("You have already voted for this!")
+        }
+    }
     var router = useRouter();
     // console.log(id)
     // getimage(id)
@@ -51,7 +60,7 @@ export default function Scanner() {
                                 </div>
 
 
-                                <button onClick={() => voteit(image.image_id)}>Add to wishlist</button>
+                                <Link href = "/wishlist"><button onClick={async () => await voteit(image.image_id)}>Add to wishlist</button></Link>
                                 <Link href='/scanner'><button>No</button></Link>
                             </>
                         )
