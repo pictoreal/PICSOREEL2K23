@@ -29,6 +29,5 @@ export default function Home() {
         <HomeContent />
       </Container>
     </Container>
-
   )
 }

@@ -4,7 +4,7 @@ import style from '../styles/Index.module.css';
 
 function HomeContent(){
     return (
-        <Container>
+        <Container className={style.contentContainer}>
             <h3 className={style.titleh3}>PICTOREAL</h3>
             <h4 className={style.titleh4}>presents</h4>
             <h1 className={style.titleh1}>PICS-O-REEL</h1>
