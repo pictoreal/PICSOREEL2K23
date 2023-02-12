@@ -32,7 +32,7 @@ function NavigationBar(){
     }
 
     return (
-        <Navbar sticky="top" expand="lg" className={style.navContainer}>
+        <Navbar fixed="top" expand="lg" className={style.navContainer}>
         <Container>
             <Navbar.Brand href="#home" className={style.navLogoTitle}>Pics-o-reel</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
