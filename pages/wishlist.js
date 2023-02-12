@@ -1,16 +1,22 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Wishlist() {
+  const router = useRouter()
   const [isloggedin, setIsLoggedIn] = useState(false)
 
   const checkifuser = async () => {
     const loggedInUser = localStorage.getItem("user");
-    const resh = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
-    const data = await resh.json()
+    const res = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
+    const data = await res.json()
     if (data.name !== "notuser") {
       setIsLoggedIn(true)
+    }
+    else{
+      alert("Please login to view your wishlist")
+      router.push('/login')
     }
   }
 
