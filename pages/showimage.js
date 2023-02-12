@@ -70,7 +70,7 @@ export default function Scanner() {
                                     return (
                                         <>
                                             <div key={image.image_id}>
-                                                {image.name} | {image.class} |
+                                                {image.name} | {image.class} | {image.category}
                                                 <img src={image.url}></img>
                                             </div>
                                             <Link href="/wishlist"><button onClick={async () => await voteit(image.image_id)}>Add to wishlist</button></Link>
