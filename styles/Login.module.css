@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/earlyaccess/nicomoji.css');
+
+.mainBody{
+    background-color: rgba(255, 124, 150, 1);
+    overflow-y:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.contentContainer{
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: auto;
+}
+
+.instructionsContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    padding: 0;
+    margin: 8px auto;
+    width: 90%;
+}
+
+.instructionsimg{
+    display: flex;
+    align-items: left;
+    /* flex-direction: row; */
+    height: 30rem;
+    margin: 12px auto;
+    /* margin-top: 4px; */
+}
+
+.instructionsh4{
+    font-family: 'Oswald', sans-serif;
+    margin: 16px auto;
+    color: rgba(98, 4, 79, 1);
+}
+
+.titleh2{
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.5rem;
+    color: rgba(98, 4, 79, 1);
+    /* text-align: left; */
+    margin-left: 42rem;
+    margin-top: 5.5rem;
+    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
+}
+
+.logintexth3{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    color: rgba(251, 172, 79, 0.7);
+    background-color: rgba(137, 61, 122, 0.79);
+    border-radius: 30px;
+    padding: 19px 24px 19px 24px;
+    line-height: 100%;
+    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
+    margin: 25px auto;
+}
+
+.button{
+    padding: 10px 25px;
+    margin: 20px auto;
+    background-color: rgba(104, 7, 85, 0.85);
+    color: #FBAC4F;
+    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
+    border: none;
+    border-radius: 30px;
+    font-family: 'Nico Moji', cursive;
+    font-size: 2.50rem;
+    line-height: 100%;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: auto;
+}
+
+@media  (max-width: 1200px) {
+}
+
+@media  (max-width: 992px) {
+    
+}
+
+@media (max-width: 768px){
+    .mainBody{
+        width: 100vw;
+        /* min-height: 100vh; */
+        overflow-y: auto;
+    }
+
+    .titleh2{
+        font-size: 3.5rem;
+        text-align: center;
+        margin: auto;
+        filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
+    }
+
+    .instructionsContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        padding: 0;
+        margin: 8px auto;
+        /* width: 90%; */
+        /* height: 7.5rem; */
+    }
+    
+    .instructionsimg{
+        display: flex;
+        /* flex-direction: row; */
+        height: 9rem;
+        margin: 12px auto;
+        margin-top: 4px;
+    }
+    
+    .instructionsh4{
+        margin: 30px auto;
+    }
+
+    .logintexth3{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.85rem;
+        color: rgba(251, 172, 79, 0.7);
+        background-color: rgba(137, 61, 122, 0.79);
+        border-radius: 25px;
+        padding: 19px 24px 19px 24px;
+        width: 300px;
+        margin: 10px auto;
+    }
+
+    .button{
+        font-size: 1.8rem;
+    }
+   
+}
+
+@media (max-width: 576px){
+    .contentContainer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .titleh2{
+        margin-top: 20px auto;
+    }
+
+    .instructionsh4{
+        margin:30px auto;
+    }
+
+    .logintexth3{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.7rem;
+        color: rgba(251, 172, 79, 0.7);
+        background-color: rgba(137, 61, 122, 0.79);
+        border-radius: 25px;
+        padding: 19px 24px 19px 24px;
+        width: 300px;
+        margin: 10px auto;
+    }
+
+    .button{
+        font-size: 1.3rem;
+    }
+}

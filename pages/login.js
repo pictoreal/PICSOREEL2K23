@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import Instructions from '../Components/Instructions';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Admin({href}) {
   const router = useRouter()
@@ -12,7 +14,6 @@ export default function Admin({href}) {
     const data = await res.json()
     setUsers(data)
     localStorage.setItem('user', data.name)
-    console.log(data)
     if (data.if_submitted === true){
       router.push('/myvotes')
     } else{
@@ -28,14 +29,15 @@ export default function Admin({href}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <h1>This is the instruction page.</h1>
+       {/* <div>
+         <h1>This is the instruction page.</h1> 
         <div>
           <h3>Enter User ID (eg:c2k....)</h3>
           <input type='text' value={userid} onChange={(e) => setUserId(e.target.value)}></input>
           <button onClick={() => userlogin(userid)}>User Login</button>
         </div>
-      </div>
+      </div>  */}
+      <Instructions />
     </>
   )
 }
