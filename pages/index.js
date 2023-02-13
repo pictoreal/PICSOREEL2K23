@@ -19,11 +19,6 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Niconne&display=swap" rel="stylesheet" />
       </Head>
-      {/* <div style={{margin:"auto", width:"70%"}}> */}
-        {/* <h1>This is Homepage</h1> */}
-        {/* <Link href="/adminlogin"><button>Admin</button></Link><br></br> */}
-        {/* <Link href="/login"><button>Voter Login</button></Link> */}
-      {/* </div> */}
       <Container className={style.mainContainer}>
         <HomeLogo />
         <HomeContent />

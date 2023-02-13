@@ -39,28 +39,34 @@ function NavigationBar(){
         <Navbar fixed="top" expand="lg" className={style.navContainer}>
         <Container>
             <Navbar.Brand href="/" className={style.navLogoTitle}>Pics-o-reel</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-            <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
             {
                 isloggedin ?
-                (<Nav className="justify-content-end">
-                    {
-                        ifsubmitted ?
-                        (
-                            <Nav.Link href="/myvotes" className={style.navTitle}>My Votes</Nav.Link>
-                        )
-                        :
-                        (
-                            <Nav.Link href="/wishlist" className={style.navTitle}>My Wishlist</Nav.Link>
-                        )
-                    }
-                    <Nav.Link href="/login" className={style.navTitle}>Instructions</Nav.Link>
-                    <Nav.Link href="/"><button className={style.button} onClick={logout}>Logout</button></Nav.Link>
-                </Nav>)
+                (
+                    <>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                        <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
+                            <Nav className="justify-content-end">
+                                {
+                                    ifsubmitted ?
+                                    (
+                                        <Nav.Link href="/myvotes" className={style.navTitle}>My Votes</Nav.Link>
+                                    )
+                                    :
+                                    (
+                                        <Nav.Link href="/wishlist" className={style.navTitle}>My Wishlist</Nav.Link>
+                                    )
+                                }
+                                <Nav.Link href="/login" className={style.navTitle}>Instructions</Nav.Link>
+                                <Nav.Link href="/"><button className={style.button} onClick={logout}>Logout</button></Nav.Link>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </>
+                )
                     :
-                ("")
+                (
+                    ("")
+                )
             }
-            </Navbar.Collapse>
         </Container>
         </Navbar>
     )

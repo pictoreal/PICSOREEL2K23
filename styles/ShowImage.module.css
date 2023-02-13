@@ -1,0 +1,128 @@
+.mainBody{
+    background-color: rgba(253, 129, 153, 0.75);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainContainer{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mainTitle{
+    font-family: 'Oswald', sans-serif;
+    font-size: 4rem;
+    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
+    line-height: 100%;
+    color: rgba(113, 13, 92, 1);
+    text-align: center;
+    margin: 100px auto;
+    margin-bottom: 37.5px;
+}
+
+.contentContainer{
+    margin: auto 0;
+}
+
+.boxImage{
+    padding: 0;
+}
+
+.box{
+    position: relative;
+    width: 100%;
+    border-width: 28px;
+    border-color: rgba(127, 29, 98, 1);
+    background-color: rgba(127, 29, 98, 1);
+    border-style: solid;
+    border-radius: 25px;
+    padding: 0;
+    margin: auto;
+}
+
+.image{
+    width: 100%;
+    height: auto;
+}
+
+.imageContainer{
+    
+}
+
+.boxBigTitle{
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
+    line-height: 100%;
+    text-align: center;
+    color: rgba(251, 172, 79, 1);
+}
+
+.boxSmallTitle{
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
+    line-height: 100%;
+    text-align: center;
+    color: rgba(251, 172, 79, 1);
+    text-transform: capitalize;
+    padding: 10px;
+}
+
+.cancelButton{
+    position: absolute;
+    left: 0;
+    bottom: -60px;
+    background-color: rgba(253, 129, 153, 0);
+    border: none;
+    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
+}
+
+.cancelButton img{
+    width: 65px;
+}
+
+.okButton{
+    position: absolute;
+    right: 0;
+    bottom: -60px;
+    background-color: rgba(253, 129, 153, 0);
+    border: none;
+    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
+}
+
+.okButton img{
+    width: 65px;
+}
+
+@media  (max-width: 1200px) {
+    
+}
+
+@media  (max-width: 992px) {
+    .mainTitle{
+        margin: 75px auto;
+        margin-bottom: 20px;;
+        font-size: 3rem;
+    }
+    .contentContainer{
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+@media  (max-width: 768px) {
+    .mainTitle{
+        font-size: 2.5rem;
+    }
+}
+
+@media  (max-width: 576px) {
+
+}
