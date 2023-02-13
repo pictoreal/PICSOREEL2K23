@@ -10,7 +10,7 @@ function NavigationBar(){
     const router = useRouter()
     const [data, setData] = useState("No result");
     const [isloggedin, setIsLoggedIn] = useState(false)
-  
+    const [ifsubmitted, setIfSubmitted] = useState(false)
     const checkifuser = async () => {
         const loggedInUser = localStorage.getItem("user");
         const resh = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
@@ -18,6 +18,10 @@ function NavigationBar(){
         if (data.name !== "notuser") {
             setIsLoggedIn(true);
             setData(null);
+            if(data.if_submitted === true)
+            {
+                setIfSubmitted(true)
+            }
         } else{
             router.push('/login')
         }
@@ -40,8 +44,16 @@ function NavigationBar(){
             {
                 isloggedin ?
                 (<Nav className="justify-content-end">
-                    <Nav.Link href="/wishlist" className={style.navTitle}>My Wishlist</Nav.Link>
-                    <Nav.Link href="/myvotes" className={style.navTitle}>My Wishlist</Nav.Link>
+                    {
+                        ifsubmitted ?
+                        (
+                            <Nav.Link href="/myvotes" className={style.navTitle}>My Votes</Nav.Link>
+                        )
+                        :
+                        (
+                            <Nav.Link href="/wishlist" className={style.navTitle}>My Wishlist</Nav.Link>
+                        )
+                    }
                     <Nav.Link href="/login" className={style.navTitle}>Instructions</Nav.Link>
                     <Nav.Link href="/"><button className={style.button} onClick={logout}>Logout</button></Nav.Link>
                 </Nav>)

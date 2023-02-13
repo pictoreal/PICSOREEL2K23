@@ -21,6 +21,10 @@ export default function Wishlist() {
     const data = await res.json()
     if (data.name !== "notuser") {
       setIsLoggedIn(true)
+      if(data.if_submitted === true)
+      {
+        router.push('/myvotes')
+      }
     }
     else{
       alert("Please login to view your wishlist")
@@ -275,7 +279,7 @@ export default function Wishlist() {
             :
           (
             <div>
-              <h2>Not logged in</h2>
+              <h2>Loading...</h2>
             </div>
           )
       }
