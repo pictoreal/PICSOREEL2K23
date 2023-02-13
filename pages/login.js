@@ -4,25 +4,7 @@ import { useRouter } from 'next/router'
 import Instructions from '../Components/Instructions';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function Admin({href}) {
-  const router = useRouter()
-  const [users, setUsers] = useState([])
-  const [userid, setUserId] = useState('')
-  const userlogin = async userid => {
-    const s = process.env.BASE_FETCH_URL
-    const res = await fetch(`http://localhost:3000/api/checkadmin/${userid}`)
-    const data = await res.json()
-    setUsers(data)
-    localStorage.setItem('user', data.name)
-    if(data.name === "notuser"){
-      alert("Please enter a valid user id");
-    } else if(data.if_submitted === true){
-      router.push('/myvotes');
-    } else{
-      router.push('/wishlist');
-    }
-  }
-
+export default function Admin({ href }) {
   return (
     <>
       <Head>
