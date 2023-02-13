@@ -41,6 +41,7 @@ function NavigationBar(){
                 isloggedin ?
                 (<Nav className="justify-content-end">
                     <Nav.Link href="/wishlist" className={style.navTitle}>My Wishlist</Nav.Link>
+                    <Nav.Link href="/myvotes" className={style.navTitle}>My Wishlist</Nav.Link>
                     <Nav.Link href="/login" className={style.navTitle}>Instructions</Nav.Link>
                     <Nav.Link href="/"><button className={style.button} onClick={logout}>Logout</button></Nav.Link>
                 </Nav>)

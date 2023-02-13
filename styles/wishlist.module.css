@@ -35,6 +35,11 @@
     background-color: rgba(253, 129, 153, 0.75);
     margin: 25px auto 0px auto;
 }
+.myVoteBox{
+    background-color: rgba(253, 129, 153, 0.75);
+    margin: 25px auto 0px auto;
+    padding-bottom: 25px;
+}
 
 .boxTitle{
     font-family: 'Niconne', cursive;
