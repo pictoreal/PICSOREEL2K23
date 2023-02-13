@@ -1,12 +1,15 @@
 import Link from 'next/link';
 import Admin from '../pages/login';
+import { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
 import style from '../styles/Index.module.css';
 import lstyle from '../styles/Login.module.css';
+import NavigationBar from './NavigationBar';
 
 function Instructions(){
-    return(
+    const [userid, setUserId] = useState('')
+    return(  
         <Container fluid className={lstyle.mainBody}>
         <Container className={lstyle.contentContainer}>
             <h2 className={lstyle.titleh2}>Instructions</h2>
@@ -26,16 +29,13 @@ function Instructions(){
             </h4>
             </Container>
         <Container className={lstyle.loginContainer}>
-        <h3 className={lstyle.logintexth3}>Enter Your Registration ID (eg:C2K....)</h3>
-        {/* <input type='text' value={userid} onChange={(e) => setUserId(e.target.value)}></input> */}
+        <input type='text' className={lstyle.logintexth3} value={userid} onChange={(e) => setUserId(e.target.value)} placeholder={"Enter Your Registration ID (eg:C2K....)"}></input>
         <Link href='/wishlist'>
         <button onClick={() => userlogin(userid)} className={lstyle.button}>LOGIN</button>
         </Link>
         </Container>
+        </Container>
         
-        <Container className={style.mainContainer}>
-        </Container>
-        </Container>
     )
 }
 

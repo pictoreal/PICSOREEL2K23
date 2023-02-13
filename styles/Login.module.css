@@ -59,11 +59,20 @@
     text-align: center;
     color: rgba(251, 172, 79, 0.7);
     background-color: rgba(137, 61, 122, 0.79);
-    border-radius: 30px;
+    border-radius: 40px;
+    border-style: none;
     padding: 19px 24px 19px 24px;
     line-height: 100%;
     filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
     margin: 25px auto;
+}
+
+.logintexth3::placeholder{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    color: rgba(251, 172, 79, 0.7);
+    padding: 19px 24px 23px 24px;
 }
 
 .button{
@@ -135,13 +144,21 @@
 
     .logintexth3{
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.85rem;
+        font-size: 1.5rem;
         color: rgba(251, 172, 79, 0.7);
         background-color: rgba(137, 61, 122, 0.79);
         border-radius: 25px;
+        border-style: none;
         padding: 19px 24px 19px 24px;
         width: 300px;
         margin: 10px auto;
+        filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
+    }
+
+    .logintexth3::placeholder{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.8rem;
+        color: rgba(251, 172, 79, 0.7);
     }
 
     .button{
@@ -173,6 +190,7 @@
         padding: 19px 24px 19px 24px;
         width: 300px;
         margin: 10px auto;
+        filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
     }
 
     .button{
