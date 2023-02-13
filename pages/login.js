@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Instructions from '../Components/Instructions';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import NavigationBar from '../Components/NavigationBar';
 
 export default function Admin({ href }) {
