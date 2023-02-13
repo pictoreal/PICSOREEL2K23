@@ -34,7 +34,7 @@ function NavigationBar(){
     return (
         <Navbar fixed="top" expand="lg" className={style.navContainer}>
         <Container>
-            <Navbar.Brand href="#home" className={style.navLogoTitle}>Pics-o-reel</Navbar.Brand>
+            <Navbar.Brand href="/" className={style.navLogoTitle}>Pics-o-reel</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
             {

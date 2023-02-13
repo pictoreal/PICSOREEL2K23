@@ -18,14 +18,6 @@ export default function Admin({ href }) {
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet"/>
       </Head>
       <NavigationBar/>
-      {/* <div>
-        <h1>This is the instruction page.</h1>
-        <div>
-          <h3>Enter User ID (eg:c2k....)</h3>
-          <input type='text' value={userid} onChange={(e) => setUserId(e.target.value)}></input>
-          <button onClick={() => userlogin(userid)}>User Login</button>
-        </div>
-      </div> */}
       <Instructions />
     </>
   )
