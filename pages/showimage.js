@@ -89,12 +89,12 @@ export default function Scanner() {
                                     images.map((image) => {
                                         return (
                                             <Row className={style.contentContainer}>
-                                                <Col lg={5} md={6} sm={5}>
+                                                <Col lg={5} md={6} sm={6} xs={9}>
                                                     <Container className={style.imageContainer}>
                                                         <img src="Trophy.png" className={style.image}></img>
                                                     </Container>
                                                 </Col>
-                                                <Col lg={5} md={6} sm={5}>
+                                                <Col lg={5} md={6} sm={6} xs={10}>
                                                     <Container className={style.box}>
                                                         <Container key={image.image_id} className={style.boxImage}>
                                                             <img src={image.url} className={style.image}></img>
