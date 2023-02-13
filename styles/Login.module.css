@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/earlyaccess/nicomoji.css');
 
 .mainBody{
-    background-color: rgba(255, 124, 150, 1);
+    background-color: rgba(253, 129, 153, 0.75);
     overflow-y:auto;
     width: 100%;
     display: flex;

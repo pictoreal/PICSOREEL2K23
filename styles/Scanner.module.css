@@ -48,25 +48,25 @@
 
 @media  (max-width: 768px) {
     .mainContainer{
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     .imageContainer{
-        margin-top: 75px;
-        margin-bottom: 0;
         width: 60%;
+        margin: auto;
     }
     .scannerContainer{
         width: 60%;
-        margin: auto;
+        margin-top: 112.5px;
+        margin-bottom: 0;
     }
 }
 
 @media  (max-width: 576px) {
    .imageContainer{
-        margin-top: 100px;
-        width: 80%;
-   }
-   .scannerContainer{
+       width: 80%;
+    }
+    .scannerContainer{
+        margin-top: 125px;
         width: 95%;
         border-width: 15px;
    }
