@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import NavigationBar from "../Components/NavigationBar"
 import Container from 'react-bootstrap/Container'
-import Image from 'react-bootstrap/Image'
 import '../public/scannerVector.png'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Row from 'react-bootstrap/Row';
