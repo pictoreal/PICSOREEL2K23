@@ -1,199 +1,175 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300;1,400;1,500&display=swap');
-@import url('https://fonts.googleapis.com/earlyaccess/nicomoji.css');
-
 .mainBody{
     background-color: rgba(253, 129, 153, 0.75);
-    overflow-y:auto;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainContainer{
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+}
+
+.titleContainer{
+    margin: 75px auto !important;
+    margin-bottom: 50px !important;
+}
+
+.title{
+    font-family: 'Oswald', sans-serif;
+    font-size: 4rem;
+    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
+    line-height: 100%;
+    color: rgba(113, 13, 92, 1);
+    text-align: center;
+}
+
+.detailContainer{
+    margin: auto auto;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.imageContainer{
+    
+}
+
+.image{
+    width: 100%;
 }
 
 .contentContainer{
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    margin: auto;
+
 }
 
-.instructionsContainer{
-    display: flex;
-    flex-direction: row;
-    align-items: left;
-    padding: 0;
-    margin: 8px auto;
-    width: 90%;
-}
-
-.instructionsimg{
-    display: flex;
-    align-items: left;
-    /* flex-direction: row; */
-    height: 30rem;
-    margin: 12px auto;
-    /* margin-top: 4px; */
-}
-
-.instructionsh4{
+.instructionContainer{
     font-family: 'Oswald', sans-serif;
-    margin: 16px auto;
-    color: rgba(98, 4, 79, 1);
+    color: rgba(53, 27, 101, 1);
+    font-size: 1.375rem;
 }
 
-.titleh2{
+.loginContainer{
+    
+}
+
+.loginTitle{
     font-family: 'Oswald', sans-serif;
-    font-size: 3.5rem;
-    color: rgba(98, 4, 79, 1);
-    /* text-align: left; */
-    margin-left: 42rem;
-    margin-top: 5.5rem;
-    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
-}
-
-.logintexth3{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.5rem;
-    text-align: center;
-    color: rgba(251, 172, 79, 0.7);
-    background-color: rgba(137, 61, 122, 0.79);
-    border-radius: 40px;
-    border-style: none;
-    padding: 19px 24px 19px 24px;
+    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
     line-height: 100%;
-    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
-    margin: 25px auto;
+    color: rgba(113, 13, 92, 1);
+    text-align: center;
+    font-size: 1.50rem;
 }
 
-.logintexth3::placeholder{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
-    text-align: center;
+.loginText{
+    outline: none;
+    border: none;
+    border-radius: 25px;
+    background-color: rgba(137, 61, 122, 0.79);
+    color: rgba(251, 172, 79, 1);
+    font-weight: bold;
+    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
+    width: 40%;
+    padding: 13px 26px;
+    margin: 15px;
+}
+
+.loginText::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: rgba(251, 172, 79, 0.7);
-    padding: 19px 24px 23px 24px;
+    opacity: 1; /* Firefox */
+}
+  
+.loginText:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(251, 172, 79, 0.7);
+}
+  
+.loginText::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(251, 172, 79, 0.7);
 }
 
 .button{
     padding: 10px 25px;
-    margin: 20px auto;
     background-color: rgba(104, 7, 85, 0.85);
     color: #FBAC4F;
     filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
     border: none;
-    border-radius: 30px;
+    border-radius: 1.5625rem;
     font-family: 'Nico Moji', cursive;
-    font-size: 2.50rem;
+    font-size: 1.25rem;
     line-height: 100%;
     text-transform: uppercase;
     text-align: center;
+    margin: auto 15px;
 }
 
-.loginContainer{
+.loginContent{
+    width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0;
-    margin: auto;
 }
 
 @media  (max-width: 1200px) {
+    .loginText{
+        width: 60%;
+    }
 }
 
 @media  (max-width: 992px) {
-    
-}
-
-@media (max-width: 768px){
-    .mainBody{
-        width: 100vw;
-        /* min-height: 100vh; */
-        overflow-y: auto;
+    .mainContainer{
+        height: fit-content;
     }
-
-    .titleh2{
-        font-size: 3.5rem;
-        text-align: center;
-        margin: auto;
-        filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
+    .instructionContainer{
+        font-size: 1.25rem;
     }
-
-    .instructionsContainer{
-        display: flex;
+    .loginTitle{
+        font-size: 1.75rem;
+    }
+    .loginText{
+        width: 90%;
+        margin: 10px 0px;
+    }
+    .loginContent{
         flex-direction: column;
-        align-items: left;
-        padding: 0;
-        margin: 8px auto;
-        /* width: 90%; */
-        /* height: 7.5rem; */
     }
-    
-    .instructionsimg{
-        display: flex;
-        /* flex-direction: row; */
-        height: 9rem;
-        margin: 12px auto;
-        margin-top: 4px;
-    }
-    
-    .instructionsh4{
+    .button{
         margin: 30px auto;
+        margin-top: 10px;
     }
-
-    .logintexth3{
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1.5rem;
-        color: rgba(251, 172, 79, 0.7);
-        background-color: rgba(137, 61, 122, 0.79);
-        border-radius: 25px;
-        border-style: none;
-        padding: 19px 24px 19px 24px;
-        width: 300px;
-        margin: 10px auto;
-        filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
-    }
-
-    .logintexth3::placeholder{
-        font-family: 'Montserrat', sans-serif;
-        font-size: 0.8rem;
-        color: rgba(251, 172, 79, 0.7);
-    }
-
-    .button{
-        font-size: 1.8rem;
-    }
-   
 }
 
-@media (max-width: 576px){
-    .contentContainer{
-        display: flex;
+@media  (max-width: 768px) {
+    .mainContainer{
+        height: fit-content;
+    }
+    .detailContainer{
         flex-direction: column;
     }
-
-    .titleh2{
-        margin-top: 20px auto;
+    .titleContainer{
+        margin-bottom: 10px !important;
     }
-
-    .instructionsh4{
-        margin:30px auto;
+    .instructionContainer{
+        font-size: 1.125rem;
     }
-
-    .logintexth3{
-        font-family: 'Montserrat', sans-serif;
-        font-size: 0.7rem;
-        color: rgba(251, 172, 79, 0.7);
-        background-color: rgba(137, 61, 122, 0.79);
-        border-radius: 25px;
-        padding: 19px 24px 19px 24px;
-        width: 300px;
-        margin: 10px auto;
-        filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
+    .loginContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
+}
 
-    .button{
-        font-size: 1.3rem;
+@media  (max-width: 576px) {
+    .loginTitle{
+        font-size: 1.5rem;
+    }
+    .title{
+        font-size: 3.25rem;;
+    }
+    .instructionContainer{
+        font-size: 1.00rem;
     }
 }

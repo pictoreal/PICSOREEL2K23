@@ -4,8 +4,11 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
-import style from '../styles/Index.module.css';
-import lstyle from '../styles/Login.module.css';
+import style from '../styles/Login.module.css';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../public/Instructions.png';
 
 function Instructions() {
     const router = useRouter()
@@ -44,33 +47,44 @@ function Instructions() {
     }
 
     return (
-        <Container fluid className={lstyle.mainBody}>
-            <Container className={lstyle.contentContainer}>
-                <h2 className={lstyle.titleh2}>Instructions</h2>
+        <Container fluid className={style.mainBody}>
+            <Container className={style.mainContainer}>
+                <Row className={style.titleContainer}>
+                    <Col>
+                        <h1 className={style.title}>Instructions</h1>
+                    </Col>
+                </Row>
+                <Row className={style.detailContainer}>
+                    <Col className={style.imageContainer} xl={4} lg={5} md={6} sm={7} xs={10}>
+                        <Image src='Instructions.png' className={style.image}></Image>
+                    </Col>
+                    <Col className={style.contentContainer} xl={7} lg={7} md={6} sm={12} xs={12}>
+                        <Container className={style.instructionContainer}>
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                                <br></br>
+                                <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                <br></br>
+                                <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</li>
+                                <br></br>
+                                <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+                            </ul>
+                        </Container>
+                        {
+                            !isloggedin ?
+                                (<Container className={style.loginContainer}>
+                                    <h5 className={style.loginTitle}>Enter your Registration ID</h5>
+                                    <Container className={style.loginContent}>
+                                        <input type='text' className={style.loginText} value={userid} onChange={(e) => setUserId(e.target.value)} placeholder={"C2K21106773"}></input>
+                                        <button onClick={() => userlogin(userid)} className={style.button}>LOGIN</button>
+                                    </Container>
+                                </Container>)
+                                :
+                                ("")
+                        }
+                    </Col>
+                </Row>
             </Container>
-            <Container className={lstyle.instructionsContainer}>
-                <Image src='Instructions.png' className={lstyle.instructionsimg}></Image>
-                <h4 className={lstyle.instructionsh4}>
-                    <ul>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-                        <br></br>
-                        <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                        <br></br>
-                        <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</li>
-                        <br></br>
-                        <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
-                    </ul>
-                </h4>
-            </Container>
-            {
-                !isloggedin ?
-                    (<Container className={lstyle.loginContainer}>
-                        <input type='text' className={lstyle.logintexth3} value={userid} onChange={(e) => setUserId(e.target.value)} placeholder={"Enter Your Registration ID (eg:C2K....)"}></input>
-                        <button onClick={() => userlogin(userid)} className={lstyle.button}>LOGIN</button>
-                    </Container>)
-                    :
-                    ("")
-            }
         </Container>
     )
 }
