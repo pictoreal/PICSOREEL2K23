@@ -13,7 +13,6 @@ import '../public/okLogo.png'
 import '../public/cancelLogo.png'
 import '../public/Trophy.png'
 
-
 export default function Scanner() {
     const [images, setImages] = useState([])
     const [isloggedin, setIsLoggedIn] = useState(false)
@@ -89,7 +88,7 @@ export default function Scanner() {
                                     images.map((image) => {
                                         return (
                                             <Row className={style.contentContainer}>
-                                                <Col lg={5} md={6} sm={6} xs={9}>
+                                                <Col lg={5} md={6} sm={6} xs={8}>
                                                     <Container className={style.imageContainer}>
                                                         <img src="Trophy.png" className={style.image}></img>
                                                     </Container>

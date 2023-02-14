@@ -52,7 +52,7 @@
 }
 
 .imageContainer{
-    
+    margin-top: 10px;
 }
 
 .boxBigTitle{
@@ -120,7 +120,30 @@
     .contentContainer{
         justify-content: center;
         align-items: center;
-        flex-direction: column;
+        flex-direction: column-reverse;
+    }
+    .box{
+        border-width: 18px;
+        border-radius: 15px;
+    }
+    .okButton{
+        bottom: -40px;
+    }
+    .cancelButton{
+        bottom: -40px;
+    }
+    .okButton img{
+        width: 50px;
+    }
+    .cancelButton img{
+        width: 50px;
+    }
+    .boxSmallTitle{
+        font-size: 1rem;
+        padding: 5px;
+    }
+    .boxBigTitle{
+        font-size: 1.25rem;
     }
 }
 
