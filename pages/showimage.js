@@ -44,6 +44,7 @@ export default function Scanner() {
                     'Content-Type': 'application/JSON'
                 }
             })
+            router.reload()
             const data = await res.json();
             if (data.msg) {
                 alert("2 votes already casted in given category")

@@ -32,10 +32,6 @@ export default function Wishlist() {
     }
   }
 
-  const logout = async name => {
-    localStorage.removeItem('user');
-  }
-
   //displaying all the images with category painting from atlas
   const [paintings, setPainting] = useState([])
   const [photographys, setPhotography] = useState([])
