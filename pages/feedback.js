@@ -2,6 +2,9 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { Container } from 'react-bootstrap'
+import Image from 'react-bootstrap/Image'
+import style from '../styles/Thankyou.module.css'
 
 export default function feedback() {
 
@@ -38,15 +41,20 @@ export default function feedback() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <h1><b>Thank you for voting!</b></h1>
-        <br></br>
-        <h3>Click the button below and leave us your valuable feedback!</h3>
-        <br></br>
-        <div>
-          <Link href="https://docs.google.com/forms/d/e/1FAIpQLSc5bZBUMK98bxt_P92EHSularg0bo6Y1eWS4jniSZfgVxpRmg/viewform?usp=sf_link"><button>Submit Feedback</button></Link>
+        <h1 className={style.titleh1}><b>Thank You</b></h1>
+        
+        {/* <div>
           <Link href="/myvotes"><button>Back to Vote List</button></Link>
           <Link href='/login'><button onClick={() => logout()}>Logout</button></Link>
-        </div>
+        </div> */}
+        <Container fluid className={style.mainbody}>
+          <Container className={style.content}>
+            <Image src='Heart.png' className={style.image}></Image>
+          </Container>
+          <Container className={style.form}>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7NgtEQHT4jecCVjH_dpMu0OH5SgA_bUA55RGQ8Um5x6aRgw/viewform?embedded=true" className={style.form} frameborder="0" marginheight="0" marginwidth="0" align-items="center">Loading…</iframe>
+        </Container>
+        </Container>
       </div>
     </>
   )
