@@ -52,7 +52,8 @@ export default function feedback() {
             <Image src='Heart.png' className={style.image}></Image>
           </Container>
           <Container className={style.form}>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7NgtEQHT4jecCVjH_dpMu0OH5SgA_bUA55RGQ8Um5x6aRgw/viewform?embedded=true" className={style.form} frameborder="0" marginheight="0" marginwidth="0" align-items="center">Loading…</iframe>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7NgtEQHT4jecCVjH_dpMu0OH5SgA_bUA55RGQ8Um5x6aRgw/viewform?embedded=true" className={style.form} width="340px" 
+    height="1400px" frameborder="0" marginheight="0" marginwidth="0" align-items="center">Loading…</iframe>
         </Container>
         </Container>
       </div>
