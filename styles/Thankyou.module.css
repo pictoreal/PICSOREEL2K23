@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap');
 
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .form{
-    align-items: right;
-    width:100%;
-    height:1400px;
+    width : 100%;
+    max-height: 1620;
 }
 
 .titleh1 {
@@ -12,32 +17,30 @@
     color: rgba(104, 7, 85, 0.85);
     font-size: 3.50rem;
     filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
-    margin-top: 30px;
 }
 
 .image {
-    width:150px;
-    height: 150px;
-    float:left;
-    margin: 0 530px auto;
+    width: 200px;
+    height: 200px;
+    margin: auto;
 }
 
-@media (max-width: 768px){
-    
-.form{
-    align-items: right;
-    width:340px;
-    height:1400px;
+@media (max-height: 1200x) {
+
 }
 
-.titleh1{
-    font-size: 2rem;
+@media (max-height: 992px) {
+
 }
 
-.image {
-    width:80px;
-    height: 80px;
-    float:left;
-    margin: 0 135px auto;
+@media (max-height: 768px) {
+    .image {
+        width: 150px;
+        height: 150px;
+        margin: auto;
+    }
 }
+
+@media (max-height: 576px) {
+
 }
