@@ -18,7 +18,7 @@ function Instructions() {
 
     const checkifuser = async () => {
         const loggedInUser = localStorage.getItem("user");
-        const resh = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
+        const resh = await fetch(`/api/checkadmin/${loggedInUser}`)
         const data = await resh.json()
         if (data.name !== "notuser") {
             setIsLoggedIn(true);
@@ -33,7 +33,7 @@ function Instructions() {
 
     const userlogin = async userid => {
         const s = process.env.BASE_FETCH_URL
-        const res = await fetch(`http://localhost:3000/api/checkadmin/${userid}`)
+        const res = await fetch(`/api/checkadmin/${userid}`)
         const data = await res.json()
         setUsers(data)
         localStorage.setItem('user', data.name)
