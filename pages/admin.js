@@ -13,7 +13,7 @@ function Admin() {
 
   const checkifadmin = async () => {
     const loggedInUser = localStorage.getItem("user");
-    const resh = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
+    const resh = await fetch(`/api/checkadmin/${loggedInUser}`)
     const data = await resh.json()
     if (data.is_admin) {
       setIsLoggedIn(true)
@@ -21,7 +21,7 @@ function Admin() {
   }
   const getusers = async () => {
     const s = process.env.BASE_FETCH_URL
-    const res = await fetch('http://localhost:3000/api/getuserlist')
+    const res = await fetch('/api/getuserlist')
     const data = await res.json()
     setUsers(data)
   }
@@ -29,7 +29,7 @@ function Admin() {
   const adduser = async () => {
     const s = process.env.BASE_FETCH_URL
     const admin = localStorage.getItem('user')
-    const res = await fetch('http://localhost:3000/api/insertuser', {
+    const res = await fetch('/api/insertuser', {
       method: 'POST',
       body: JSON.stringify({ user, admin }),
       headers: {
@@ -43,7 +43,7 @@ function Admin() {
   const deleteuser = async name => {
     const s = process.env.BASE_FETCH_URL
     const admin = localStorage.getItem('user')
-    const res = await fetch('http://localhost:3000/api/deleteuser', {
+    const res = await fetch('/api/deleteuser', {
       method: 'POST',
       body: JSON.stringify({ name, admin }),
       headers: {

@@ -9,7 +9,7 @@ function Admin() {
 
     const adminlogin = async adminid => {
         const s = process.env.BASE_FETCH_URL
-        const res = await fetch(`http://localhost:3000/api/checkadmin/${adminid}`)
+        const res = await fetch(`/api/checkadmin/${adminid}`)
         const data = await res.json()
         setUsers(data)
         localStorage.setItem('user', data.name)

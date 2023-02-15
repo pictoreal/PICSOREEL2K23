@@ -17,7 +17,7 @@ export default function Wishlist() {
 
   const checkifuser = async () => {
     const loggedInUser = localStorage.getItem("user");
-    const res = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
+    const res = await fetch(`/api/checkadmin/${loggedInUser}`)
     const data = await res.json()
     if (data.name !== "notuser") {
       setIsLoggedIn(true)
@@ -40,7 +40,7 @@ export default function Wishlist() {
 
   const getcat = async cate => {
     const loggedInUser = localStorage.getItem('user')
-    const res = await fetch('http://localhost:3000/api/getWishlist', {
+    const res = await fetch('/api/getWishlist', {
       method: 'POST',
       body: JSON.stringify({ category: cate, username: loggedInUser }),
       headers: {
@@ -53,7 +53,7 @@ export default function Wishlist() {
 
   const deletevote = async imgid => {
     const loggedInUser = localStorage.getItem('user')
-    const res = await fetch('http://localhost:3000/api/deletevote', {
+    const res = await fetch('/api/deletevote', {
       method: 'POST',
       body: JSON.stringify({ username: loggedInUser, image_id: imgid }),
       headers: {
@@ -71,7 +71,7 @@ export default function Wishlist() {
 
   const submitvotes = async () => {
     const loggedInUser = localStorage.getItem('user')
-    const res = await fetch('http://localhost:3000/api/submitvotes', {
+    const res = await fetch('/api/submitvotes', {
       method: 'POST',
       body: JSON.stringify({ username: loggedInUser }),
       headers: {

@@ -19,7 +19,7 @@ export default function Scanner() {
 
     const checkifuser = async () => {
         const loggedInUser = localStorage.getItem("user");
-        const resh = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
+        const resh = await fetch(`/api/checkadmin/${loggedInUser}`)
         const data = await resh.json()
         if (data.name !== "notuser") {
             setIsLoggedIn(true)
@@ -27,7 +27,7 @@ export default function Scanner() {
     }
     const getimage = async locid => {
         const s = process.env.BASE_FETCH_URL
-        const res = await fetch(`http://localhost:3000/api/getimage/${locid}`)
+        const res = await fetch(`/api/getimage/${locid}`)
         const data = await res.json()
         setImages(data)
     }
@@ -36,7 +36,7 @@ export default function Scanner() {
         var user = localStorage.getItem('user')
         const s = process.env.BASE_FETCH_URL
         try {
-            const res = await fetch('http://localhost:3000/api/addvote', {
+            const res = await fetch('/api/addvote', {
                 method: 'POST',
                 body: JSON.stringify({ image_id: images[0].image_id, category: images[0].category, voter_id: user }),
                 headers: {

@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     if(user[0].if_submitted === false){
         const allPosts = await db.collection("Votes").find({voter_id:name}).toArray();
         for( let i = 0; i < allPosts.length; i++){
-            const res = await fetch(`http://localhost:3000/api/getimage/${allPosts[i].image_id}`)
+            const res = await fetch(`https://hostpicsoreel-git-tatpurti-a2k007.vercel.app/api/getimage/${allPosts[i].image_id}`)
             const data = await res.json()
             const newvotes = data[0].vote + 1;
             await db.collection("Images").updateOne({image_id: allPosts[i].image_id}, {$set: {vote: newvotes}});

@@ -39,7 +39,7 @@ export default function MyVotes() {
 
   const getcat = async cate => {
     const loggedInUser = localStorage.getItem('user')
-    const res = await fetch('http://localhost:3000/api/getWishlist', {
+    const res = await fetch('/api/getWishlist', {
       method: 'POST',
       body: JSON.stringify({ category: cate, username: loggedInUser }),
       headers: {

@@ -18,7 +18,7 @@ export default function Scanner() {
   
   const checkifuser = async () => {
     const loggedInUser = localStorage.getItem("user");
-    const resh = await fetch(`http://localhost:3000/api/checkadmin/${loggedInUser}`)
+    const resh = await fetch(`/api/checkadmin/${loggedInUser}`)
     const data = await resh.json()
     if (data.name !== "notuser") {
       setIsLoggedIn(true);
@@ -34,7 +34,7 @@ export default function Scanner() {
     
   const autoRedirect = async data => {
     const s = process.env.BASE_FETCH_URL
-    const res = await fetch(`http://localhost:3000/api/getimage/${data}`)
+    const res = await fetch(`/api/getimage/${data}`)
     const image = await res.json()
     if (image.length > 0) {
       router.push(`/showimage/?id=${data}`)
