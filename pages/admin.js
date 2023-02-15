@@ -133,9 +133,9 @@ function Admin() {
           </Container>
         </>
       ) : (
-        <div>
-          You are not admin
-        </div>
+        <Container>
+            <h5 className={style.checkTitle}>You are not admin</h5>
+        </Container>
       )
       }
     </>
