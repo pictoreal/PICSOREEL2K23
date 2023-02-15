@@ -34,21 +34,12 @@
 .box{
     background-color: rgba(253, 129, 153, 0.75);
     margin: 25px auto 0px auto;
+    padding-top: 25px;
 }
 .myVoteBox{
     background-color: rgba(253, 129, 153, 0.75);
     margin: 25px auto 0px auto;
-    padding-bottom: 25px;
-}
-
-.boxTitle{
-    font-family: 'Niconne', cursive;
-    font-size: 1.75rem;
-    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
-    line-height: 100%;
-    color: rgba(52, 41, 111, 1);
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 25px;
 }
 
 .image{
@@ -97,9 +88,7 @@
 }
 
 @media  (max-width: 1200px) {
-    .boxTitle{
-        font-size: 1.375rem;
-    }
+
 }
 
 @media  (max-width: 992px) {
@@ -115,16 +104,11 @@
     .title{
         font-size: 2.125rem;
     }
-    .boxTitle{
-        font-size: 1.5rem;
-    }
     .mainBox{
         padding: 0;
     }
 }
 
 @media  (max-width: 576px) {
-    .boxTitle{
-        font-size: 1.25rem;
-    }
+
 }

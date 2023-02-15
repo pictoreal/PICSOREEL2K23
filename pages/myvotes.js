@@ -92,12 +92,7 @@ export default function MyVotes() {
                         paintings.map((painting) => {
                           return (
                             <Container className={style.myVoteBox}>
-                              <Container key={painting.image_id} className={style.boxTitle}>
-                                {painting.name} | {painting.class}
-                              </Container>
-                              <Container>
                                 <img src={painting.url} className={style.image}/>
-                              </Container>
                             </Container>
                           )
                         })
@@ -111,12 +106,7 @@ export default function MyVotes() {
                         photographys.map((photograph) => {
                           return (
                             <Container className={style.myVoteBox}>
-                              <Container key={photograph.image_id} className={style.boxTitle}>
-                                {photograph.name} | {photograph.class}
-                              </Container>
-                              <Container>
                                 <img src={photograph.url} className={style.image}/>
-                              </Container>
                             </Container>
                           )
                         })
@@ -132,12 +122,7 @@ export default function MyVotes() {
                         digitalarts.map((darts) => {
                           return (
                             <Container className={style.myVoteBox}>
-                              <Container key={darts.image_id} className={style.boxTitle}>
-                                {darts.name} | {darts.class}
-                              </Container>
-                              <Container>
                                 <img src={darts.url} className={style.image}/>
-                              </Container>
                             </Container>
                           )
                         })
@@ -151,12 +136,7 @@ export default function MyVotes() {
                         themes.map((theme) => {
                           return (
                             <Container className={style.myVoteBox}>
-                              <Container key={theme.image_id} className={style.boxTitle}>
-                                {theme.name} | {theme.class}
-                              </Container>
-                              <Container>
                                 <img src={theme.url} className={style.image}/>
-                              </Container>
                             </Container>
                           )
                         })

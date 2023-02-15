@@ -98,12 +98,6 @@ export default function Scanner() {
                                                         <Container key={image.image_id} className={style.boxImage}>
                                                             <img src={image.url} className={style.image}></img>
                                                         </Container>
-                                                        <Container key={image.image_id} className={style.boxSmallTitle}>
-                                                            {image.name} {image.class} 
-                                                        </Container>
-                                                        <Container key={image.image_id} className={style.boxBigTitle}>
-                                                            {image.category}
-                                                        </Container>
                                                         <Link href='/scanner'><button className={style.cancelButton}><img src="cancelLogo.png"/></button></Link>
                                                         <Link href="/wishlist"><button className={style.okButton} onClick={async () => await voteit(image.image_id)}><img src="okLogo.png"/></button></Link>
                                                     </Container>

@@ -1,68 +1,18 @@
-.mainBody{
-    background-color: rgba(253, 129, 153, 0.75);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.mainContainer{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.titleContainer{
-    margin: 75px auto !important;
-    margin-bottom: 50px !important;
-}
-
-.title{
+.mainTitle{
     font-family: 'Oswald', sans-serif;
     font-size: 4rem;
     filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
     line-height: 100%;
     color: rgba(113, 13, 92, 1);
     text-align: center;
+    margin: 30px auto;
 }
 
-.detailContainer{
-    margin: auto auto;
-    justify-content: space-around;
+.mainContainer{
+    display: flex;
+    justify-content: center;
     align-items: center;
-}
-
-.imageContainer{
-    
-}
-
-.image{
-    width: 100%;
-}
-
-.contentContainer{
-
-}
-
-.instructionContainer{
-    font-family: 'Oswald', sans-serif;
-    color: rgba(53, 27, 101, 1);
-    font-size: 1rem;
-    font-weight: bold;
-    line-height: 170%;
-}
-
-.instructionContainer{
-    
-}
-
-.instructionContainer li{
-    font-weight: normal;
-}
-
-.loginContainer{
-    
+    flex-direction: column;
 }
 
 .loginTitle{
@@ -71,7 +21,9 @@
     line-height: 100%;
     color: rgba(113, 13, 92, 1);
     text-align: center;
-    font-size: 1.50rem;
+    font-size: 2.25rem;
+    margin: 37.5px auto;
+    margin-bottom: 25px;
 }
 
 .loginText{
@@ -82,7 +34,7 @@
     color: rgba(251, 172, 79, 1);
     font-weight: bold;
     filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
-    width: 40%;
+    width: 300px;
     padding: 13px 26px;
     margin: 15px;
 }
@@ -116,70 +68,72 @@
 }
 
 .loginContent{
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.proceedButton{
+    display: flex;
+    margin: 20px auto;
+    padding: 10px 25px;
+    background-color: rgba(104, 7, 85, 0.85);
+    color: #FBAC4F;
+    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
+    border: none;
+    border-radius: 1.5625rem;
+    font-family: 'Nico Moji', cursive;
+    font-size: 1rem;
+    line-height: 100%;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.checkTitle{
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
+    line-height: 100%;
+    color: rgba(113, 13, 92, 1);
+    text-align: center;
+    margin: 25px auto;
+}
+
+.dataTitle{
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.75rem;
+    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
+    line-height: 100%;
+    color: rgba(113, 13, 92, 1);
+    text-align: center;
+    margin: 25px auto;
+}
+
 @media  (max-width: 1200px) {
-    .loginText{
-        width: 60%;
-    }
+
 }
 
 @media  (max-width: 992px) {
-    .mainContainer{
-        height: fit-content;
-    }
-    .instructionContainer{
-        font-size: 1.25rem;
-    }
-    .loginTitle{
-        font-size: 1.75rem;
-    }
-    .loginText{
-        width: 90%;
-        margin: 10px 0px;
-    }
-    .loginContent{
-        flex-direction: column;
-    }
-    .button{
-        margin: 30px auto;
-        margin-top: 10px;
-    }
+    
 }
 
 @media  (max-width: 768px) {
-    .mainContainer{
-        height: auto;
-    }
-    .detailContainer{
-        flex-direction: column;
-    }
-    .titleContainer{
-        margin-bottom: 10px !important;
-    }
-    .instructionContainer{
-        font-size: 1.125rem;
-    }
     .loginContainer{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
+    .loginText{
+        width: 200px;
+    }
 }
 
 @media  (max-width: 576px) {
-    .loginTitle{
-        font-size: 1.5rem;
+    .loginContent{
+        flex-direction: column;
     }
-    .title{
-        font-size: 3.25rem;;
-    }
-    .instructionContainer{
-        font-size: 1.00rem;
+    .loginText{
+        width: 225px;
     }
 }

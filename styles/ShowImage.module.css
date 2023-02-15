@@ -44,6 +44,7 @@
     border-radius: 25px;
     padding: 0;
     margin: auto;
+    border-bottom-width: 50px;
 }
 
 .image{
@@ -55,30 +56,10 @@
     margin-top: 25px;
 }
 
-.boxBigTitle{
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.5rem;
-    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
-    line-height: 100%;
-    text-align: center;
-    color: rgba(251, 172, 79, 1);
-}
-
-.boxSmallTitle{
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.25rem;
-    filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25));
-    line-height: 100%;
-    text-align: center;
-    color: rgba(251, 172, 79, 1);
-    text-transform: capitalize;
-    padding: 10px;
-}
-
 .cancelButton{
     position: absolute;
     left: 0;
-    bottom: -60px;
+    bottom: -80px;
     background-color: rgba(253, 129, 153, 0);
     border: none;
     filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
@@ -91,7 +72,7 @@
 .okButton{
     position: absolute;
     right: 0;
-    bottom: -60px;
+    bottom: -80px;
     background-color: rgba(253, 129, 153, 0);
     border: none;
     filter: drop-shadow(0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
@@ -125,25 +106,19 @@
     .box{
         border-width: 18px;
         border-radius: 15px;
+        border-bottom-width: 36px;
     }
     .okButton{
-        bottom: -40px;
+        bottom: -60px;
     }
     .cancelButton{
-        bottom: -40px;
+        bottom: -60px;
     }
     .okButton img{
         width: 50px;
     }
     .cancelButton img{
         width: 50px;
-    }
-    .boxSmallTitle{
-        font-size: 1rem;
-        padding: 5px;
-    }
-    .boxBigTitle{
-        font-size: 1.25rem;
     }
 }
 

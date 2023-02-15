@@ -144,9 +144,6 @@ export default function Wishlist() {
                         paintings.map((painting) => {
                           return (
                             <Container className={style.box}>
-                              <Container key={painting.image_id} className={style.boxTitle}>
-                                {painting.name} | {painting.class}
-                              </Container>
                               <Container>
                                 <img src={painting.url} className={style.image}/>
                               </Container>
@@ -173,9 +170,6 @@ export default function Wishlist() {
                         photographys.map((photograph) => {
                           return (
                             <Container className={style.box}>
-                              <Container key={photograph.image_id} className={style.boxTitle}>
-                                {photograph.name} | {photograph.class}
-                              </Container>
                               <Container>
                                 <img src={photograph.url} className={style.image}/>
                               </Container>
@@ -204,9 +198,6 @@ export default function Wishlist() {
                         digitalarts.map((darts) => {
                           return (
                             <Container className={style.box}>
-                              <Container key={darts.image_id} className={style.boxTitle}>
-                                {darts.name} | {darts.class}
-                              </Container>
                               <Container>
                                 <img src={darts.url} className={style.image}/>
                               </Container>
@@ -233,9 +224,6 @@ export default function Wishlist() {
                         themes.map((theme) => {
                           return (
                             <Container className={style.box}>
-                              <Container key={theme.image_id} className={style.boxTitle}>
-                                {theme.name} | {theme.class}
-                              </Container>
                               <Container>
                                 <img src={theme.url} className={style.image}/>
                               </Container>
