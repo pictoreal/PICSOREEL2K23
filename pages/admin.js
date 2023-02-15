@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link';
 import { Container } from 'react-bootstrap';
 import style from '../styles/Admin.module.css'
+import '../public/cancelLogo.png'
+import '../public/okLogo.png'
+import Image from 'react-bootstrap';
 
 
 function Admin() {
@@ -87,30 +90,46 @@ function Admin() {
             </Container>
             <h5 className={style.dataTitle}>User List</h5>
             <button className={style.button} onClick={getusers}>Get User List</button>
-            <h5>Name | if_submitted | If_Admin</h5>
-            {
-              users.map((user) => {
-                return (
-                  <Container key={user._id}>
-                    {user.name} | {user.if_submitted ? ("Yes") : ("No")} |
-                    {user.is_admin ? (
-                      <>It's Admin</>
-                    ) : (
-                      <button onClick={() => {
-                        const confirmBox = window.confirm(
-                          "Do you really want to delete this Crumb?"
-                        )
-                        if (confirmBox === true) {
-                          deleteuser(user.name)
-                        }
-                      }}>
-                        Delete User
-                      </button>
-                    )}
-                  </Container>
-                )
-              })
-            }
+            <h5 className={style.dataTitle}>Name | if_submitted | is_Admin</h5>
+            <Container>
+
+            </Container>
+            <Container className={style.outerBox}>
+              {
+                users.map((user) => {
+                  return (
+                    <Container key={user._id} className={style.innerBox}>
+                      <h5 className={style.boxTitle}>{user.name}</h5>
+                      {user.if_submitted ?
+                      (
+                        <p className={style.logo}>&#9989;</p>
+                      )
+                      : 
+                      (
+                        <p className={style.logo}>&#10062;</p>
+                      )}
+                      {user.is_admin ? 
+                      (
+                        <h5 className={style.boxTitle}>It is Admin</h5>
+                      )
+                      : 
+                      (
+                        <button className={style.deletebutton} onClick={() => {
+                          const confirmBox = window.confirm(
+                            "Do you really want to delete this Crumb?"
+                          )
+                          if (confirmBox === true) {
+                            deleteuser(user.name)
+                          }
+                        }}>
+                          Delete User
+                        </button>
+                      )}
+                    </Container>
+                  )
+                })
+              }
+            </Container>
           </Container>
         </>
       ) : (
