@@ -12,7 +12,7 @@ module.exports = {
       repo : 'git@github.com:pictoreal/PICSOREEL2K23.git',
       path : '/home/ubuntu/PICSOREEL2K23',
       'pre-deploy-local': '',
-      'post-deploy' : 'source ~/.nvm/nvm.sh && npm install --legacy-peer -deps && npm run build && pm2 reload ecosystem.config.js --env production',
+      'post-deploy' : 'source ~/.nvm/nvm.sh && npm install --force && npm run build && pm2 reload ecosystem.config.js --env production',
       'pre-setup': '',
       'ssh_options': 'ForwardAgent=yes'
     }
