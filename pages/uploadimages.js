@@ -10,13 +10,13 @@ export default function uploadimages() {
     const [cat, setCat] = useState('')
     const [images, setImages] = useState([])
     const loadimags = async () => {
-        const res = await fetch('http://localhost:3000/api/getallimages')
+        const res = await fetch('/api/getallimages')
         const data = await res.json()
         setImages(data)
     }
     const submitentry = async () => {
         const s = process.env.BASE_FETCH_URL
-        const res = await fetch('http://localhost:3000/api/submitentry', {
+        const res = await fetch('/api/submitentry', {
             method: 'POST',
             body: JSON.stringify({ imageid: user, name: name, class: clas, url: url, category: cat }),
             headers: {
