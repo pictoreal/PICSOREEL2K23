@@ -9,6 +9,7 @@ import style from "../styles/Scanner.module.css"
 import Image from 'react-bootstrap/Image'
 import '../public/scannerVector.png'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import adapter from "webrtc-adapter";
 
 export default function Scanner() {
   const router = useRouter()
