@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     // console.log(allPosts)
     for(let i = 0; i< allPosts.length; i++)
     {
-        const res = await fetch(`http://18.235.233.206/api/getimage/${allPosts[i].image_id}`)
+        const res = await fetch(`https://picsoreel.pictoreal.in/api/getimage/${allPosts[i].image_id}`)
         const data = await res.json()
         tp.push(data[0])
     }
