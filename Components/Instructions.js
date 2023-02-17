@@ -83,7 +83,7 @@ function Instructions() {
                                     <h5 className={style.loginTitle}>Enter your Registration ID</h5>
                                     <Container className={style.loginContent}>
                                         <input type='text' className={style.loginText} value={userid} onChange={(e) => setUserId(e.target.value.toLowerCase())} placeholder={"c2k21106773"}></input>
-                                        <button onClick={() => userlogin(userid)} className={style.button}>LOGIN</button>
+                                        {/* <button onClick={() => userlogin(userid)} className={style.button}>LOGIN</button> */}
                                     </Container>
                                 </Container>)
                                 :
